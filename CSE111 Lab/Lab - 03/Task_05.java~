@@ -1,0 +1,20 @@
+import java.util.Scanner;
+public class Task_05 {
+  
+  
+  public static void main(String[] args) { 
+    Scanner sc = new Scanner(System.in);
+    String str1 = sc.next();
+    String str2 = sc.next();
+    String str = str1+str2;
+    int sum=0;
+    for(int i=0; i<str.length(); i++){
+      int lttr = (int)str.charAt(i);
+      sum+=lttr;
+    }
+    System.out.println(sum);
+  }
+  
+  /* ADD YOUR CODE HERE */
+  
+}

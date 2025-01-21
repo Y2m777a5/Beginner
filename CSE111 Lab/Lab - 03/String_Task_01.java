@@ -1,0 +1,27 @@
+import java.util.Scanner;
+public class String_Task_01 {
+  
+  
+  public static void main(String[] args) { 
+    Scanner sc = new Scanner(System.in);
+    System.out.println("String_Task_01");
+    String str = sc.next();
+    int len = str.length();
+    boolean flag = true;
+    for(int i=0,j=(len-1); i<(len/2); i++, j--){
+      if(str.charAt(i) == str.charAt(j)){
+        continue;
+      }
+      else{
+        flag=false;
+        break;
+      }
+    }
+    if(flag == false){
+      System.out.println("Not a palindrom");
+    }
+    else{
+      System.out.println("Palindrome");
+    }
+  }
+}

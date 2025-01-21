@@ -1,0 +1,39 @@
+import java.util.Scanner;
+public class Task_08 {
+  
+  
+  public static void main(String[] args) { 
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Task_08");
+    
+    int num1 = sc.nextInt();
+    int num2 = sc.nextInt();
+    int low=0;
+    int up=0;
+    if(num1<num2){
+      low = num1;
+      up = num2;
+    }
+    else{
+      low = num2;
+      up = num1;
+    }
+    int count=0;
+    for(int i=low; i<=up; i++){
+      int prime=0;
+      for(int j=2; j<i; j++){
+        if(i%j==0){
+          prime++;
+        }
+        else{continue;}
+      }
+      if(prime==0){
+        count++;
+      }
+      else{
+        continue;
+      }
+    }
+    System.out.println("There are "+count+" prime numbers between "+low+" and "+up);
+  }
+}

@@ -1,0 +1,34 @@
+import java.util.Scanner;
+public class Task_03 {
+  
+  
+  public static void main(String[] args) { 
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Task_03");
+    
+    int sum=0;
+    int min=0;
+    int max=0; 
+    for(int i=0; i<10; i++){
+      int x=sc.nextInt();
+      sum+=x;
+      if(i==0){
+        min=x;
+        max=x;
+      }
+      else{
+        if(x>max){
+          max=x;
+        }
+        if(x<min){
+          min=x;
+        }
+      }
+    }
+    double av=sum/10.0;
+    System.out.println("Sum = "+sum);
+    System.out.println("Minimum = "+min);
+    System.out.println("Maximum = "+max);
+    System.out.println("Average = "+av);
+  }
+}

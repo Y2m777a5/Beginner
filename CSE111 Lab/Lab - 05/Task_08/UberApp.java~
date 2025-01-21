@@ -1,0 +1,70 @@
+
+public class UberApp {
+  public String name;
+  public int age;
+  public String [] lctn; //location
+  public String con;
+  public int count = 0;
+  
+  public void createProfile(String naam, int age, String pnum){
+    name = naam;
+    this.age = age;
+    con = pnum;
+    lctn = new String [3];
+  }
+  
+  public void showProfile(){
+    System.out.println("Hello! This is your Profile:");
+    System.out.println("Full Name: "+name);
+    System.out.println("Age: "+age);
+    System.out.println("Phone Number: "+con);
+  }
+  
+  public int remainingRides(){
+    return 3-count;
+  }
+  
+  public void bookRide(String loc, double dis){
+    if(count<3){
+      lctn[count] = loc;
+      System.out.println(name+" has booked a ride!");
+      System.out.println("Destination: "+loc);
+      System.out.println("Fare: "+(30.0*dis));
+      count++;
+    }
+    else{
+      System.out.println(name+", please update your plan to premium or wait till next month!");
+    }
+  }
+  
+  public void changeLocation(String loc, double dis){
+    count--;
+    lctn[count] = loc;
+    System.out.println(name+" has changed the destination of his current ride to "+loc);
+    System.out.println("New fare after adding 20% change fees: "+((30.0*dis)+(30.0*dis*0.2))+" Taka.");
+    count++;
+  }
+  
+  public void ridingHistory(){
+    if(count>0){
+    System.out.print(name+", you have visited ");
+    for(int i=0; i<count; i++){
+      if(i==count-1){
+        System.out.print(lctn[i]);
+      }
+      else{
+        System.out.print(lctn[i]+", ");
+      }
+    }
+    System.out.println(" this month.");
+    }
+    else{
+      System.out.println(name+", you haven't visited anywhere this month.");
+    }
+  }
+  
+  public void resetMonth(){
+    lctn = new String [3];
+    count = 0;
+  }
+}

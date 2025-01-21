@@ -1,0 +1,29 @@
+import java.util.Scanner;
+public class Task_08 {
+  
+  
+  public static void main(String[] args) { 
+    
+    System.out.println("Task_08");
+    
+    Scanner sc = new Scanner(System.in);
+    int stid = sc.nextInt();
+    
+    int year = stid/1000000;
+    int seas = (stid/100000)%10;
+    
+    if(seas == 1){
+      System.out.println("Student Joined BRAC in Spring "+year);
+    }
+    
+    else if(seas == 2){
+      System.out.println("Student Joined BRAC in Fall "+year);
+    }
+    
+    else if(seas == 3){
+      System.out.println("Student Joined BRAC in Summer "+year);
+    }
+    sc.close();
+  }
+
+}

@@ -1,0 +1,36 @@
+import java.util.Scanner;
+public class Array_Task_04 {
+  
+  
+  public static void main(String[] args) { 
+    Scanner sc = new Scanner(System.in);
+    System.out.print("N = ");
+    int inp = sc.nextInt();
+    int [] arr = new int [inp];
+    
+    for(int i=0; i<inp; i++){
+      arr[i] = sc.nextInt();
+    }
+    for(int i=0; i<inp; i++){
+      int count = 0;
+      boolean flag = true;
+      for(int k=i-1; k>=0 && i!=0; k--){
+        if(arr[i]==arr[k]){
+          flag = false;
+          break;
+        }
+      }
+      if(flag){
+        for(int j=0; j<inp; j++){
+          if(arr[i]==arr[j]){
+            count++;
+          }
+        }
+      }
+      System.out.println(arr[i]+" - "+count+" times");
+    }
+  }
+  
+  /* ADD YOUR CODE HERE */
+  
+}

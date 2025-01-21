@@ -1,0 +1,266 @@
+//Task_01...................................
+
+public class BBAStudent extends Student {
+    public BBAStudent(){
+        updateName("Default");
+        updateDepartment("BBA");
+    }
+
+    public BBAStudent(String n){
+        updateName(n);
+        updateDepartment("BBA");
+    }
+}
+
+
+
+//Task_02...................................
+
+public class Vehicle2010 extends Vehicle{
+    public void moveLowerLeft(){
+        moveDown();
+        moveLeft();
+    }
+
+    public void moveUpperRight(){
+        moveUp();
+        moveRight();
+    }
+
+    public void moveLowerRight(){
+        moveDown();
+        moveRight();
+    }
+}
+
+
+
+//Task_03...................................
+
+public class CheckingAccount extends Account{
+    public static int count;
+
+    public CheckingAccount(){
+        super(0.0);
+        count++;
+    }
+
+    public CheckingAccount(double b){
+        super(b);
+        count++;
+    }
+}
+
+
+
+//Task_04...................................
+
+public class Cat extends Animal{
+    public String breed;
+
+    public Cat(String n, int age, String c, String breed){
+        super(n, age, c);
+        this.breed = breed;
+    }
+    
+    public String info() {
+        return super.info()+"breed: "+breed;
+    }
+
+    public void makeSound(){
+        System.out.println(color+" color "+name+" is meowing");
+    }
+}
+
+
+public class Dog extends Animal{
+    public String breed;
+    
+    public Dog(String n, int age, String c, String breed){
+        super(n, age, c);
+        this.breed = breed;
+    }
+       
+    public String info() {
+        return super.info()+"breed: "+breed;
+    }
+
+    public void makeSound(){
+        System.out.println(color+" color "+name+" is barking");
+    }
+}
+
+
+
+
+//Task_05...................................
+
+public class Smartphone {
+     private String name;
+     public String [] ftr = new String [10];
+     public String [] fName = new String [10];
+     public int count1;
+     public int count2;
+
+     public Smartphone(){}
+
+     public Smartphone(String n){
+        name = n;
+     }
+
+     public void addFeature(String f, String fn){
+        if(count2<10 && name!=null){
+            if(count1==0){
+                ftr[count1]=f;
+                fName[count1++]=fn;
+                count2++;
+            }
+            else{
+               boolean flag = false;
+               for(int i=0; i<count1; i++){
+                if(ftr[i]==f){
+                    fName[i]+=", "+fn;
+                    flag = true;
+                }
+               }
+               if(!flag){
+                ftr[count1]=f;
+                fName[count1++]=fn;
+               }
+            }
+        }
+        else if(name == null){
+            System.out.println("Feature can not be added without phone name");
+        }
+     }
+
+     public void updateName(String n){
+        name=n;
+     }
+
+     public void printDetail(){
+        System.out.println("Phone Name: "+name);
+        for(int i=0; i<count1; i++){
+            System.out.println(ftr[i]+": "+fName[i]);
+        }
+     }
+}
+
+
+
+
+//Task_06...................................
+
+public class Bus {
+    public int capacity;
+    public String loc;
+
+    public Bus(int c, String l){
+        capacity = c;
+        System.out.println("Capacity: "+capacity);
+        loc = l;
+        System.out.println("Destination: "+loc);
+    }
+
+    public void addPassenger(String name, String l){
+        if(loc.equals(l) && capacity>0){
+            System.out.println(name+" is added to the bus.");
+            capacity--;
+        }
+        else if(capacity==0){
+            System.out.println("Bus is full.");
+        }
+        else{
+            System.out.println("Sorry "+name+"! The bus won't stop at "+l+"\nUse another bus.");
+        }
+    }
+
+    public void addPassenger(String name){
+        if(capacity>0){
+            capacity--;
+            System.out.println(name+" is added to the bus.\n"+name+" will get off at the last stop");
+        }
+    }
+}
+
+
+
+
+
+//Task_07...................................
+
+public class Account {
+    public static int count = 0;
+    public String name;
+    public int age;
+    public String occup;
+    public int amount;
+
+    public Account(String n, int a, String o, int am){
+        name = n;
+        age = a;
+        occup = o;
+        amount = am;
+        count++;
+    }
+
+    public void addMoney(int a){
+        amount+=a;
+    }
+
+    public void withdrawMoney(int a){
+        if(amount-a>=0){
+            amount-=a;
+        }
+        else{
+            System.out.println("Insufficient money for withdrawal!");
+        }
+    }
+
+    public void printDetails(){
+        System.out.println("Name: "+name+
+        "\nAge: "+age+
+        "\nOccupation: "+occup+
+        "\nTotal Amount: "+amount);
+    }
+}
+
+
+
+
+//Task_08...................................
+
+public class Student {
+    public String name;
+    public String dept;
+    public int tid;
+    public int did;
+    public static int cse;
+    public static int bba;
+    public static int total;
+
+    public Student(String n, String dept){
+        name = n;
+        this.dept = dept;
+        tid = ++total;
+        System.out.println("Creating Student Number: "+total);
+        if(dept.equals("CSE")){
+            did = ++cse;
+        }
+        else{
+            did = ++bba;
+        }
+    }
+
+    public void individualInfo(){
+        System.out.println(name+" is from "+dept+" department.\n"+
+        "Serial of "+name+" among all students' is: "+tid+
+        "\nSerial of "+name+" in "+dept+" department is: "+did);
+    }
+
+    public static void totalInfo(){
+        System.out.println("Total Students: "+total+
+        "\nTotal CSE Students: "+cse+
+        "\nTotal BBA Students: "+bba);
+    }
+}

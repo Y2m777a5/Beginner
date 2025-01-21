@@ -1,0 +1,26 @@
+
+public class Student {
+  public String name;
+  public String course;
+  
+  public Student(String name, String course) { 
+    this.name=name;
+    this.course=course;
+  }
+  
+  public void updateName(String name){
+    this.name=name;
+  }
+  
+  public void updateProgram(String course){
+    this.course=course;
+  }
+  
+  public String accessName(){
+    return name;
+  }
+  
+  public String accessProgram(){
+    return course;
+  }
+}

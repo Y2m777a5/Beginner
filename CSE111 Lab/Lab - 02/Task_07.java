@@ -1,0 +1,64 @@
+import java.util.Scanner;
+public class Task_07 {
+  
+  
+  public static void main(String[] args) { 
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Task_07");
+    
+    //Task_A
+    int num = sc.nextInt();
+    int sum=0;
+    int a=0;
+    int b=0;
+    for(int i=1; sum<=num; i++){
+      if(i==1){
+        a=1;
+        System.out.print(a+" ");
+      }
+      else if(i==2){
+        b=1;
+        System.out.print(b+" ");
+      }
+      else{
+        sum=a+b;
+        if(sum<=num){
+         System.out.print(sum+" ");
+        }
+        a=b;
+        b=sum;
+      }
+    }
+    System.out.println();
+    
+    //Task_B
+    int num2 = sc.nextInt();
+    int sum2=0;
+    int total=0;
+    int a2=0;
+    int b2=0;
+    for(int i=1; sum2<=num2; i++){
+      if(i==1){
+        a2=1;
+        total+=a2;
+        System.out.print(a2+" ");
+      }
+      else if(i==2){
+        b2=1;
+        total+=b2;
+        System.out.print(b2+" ");
+      }
+      else{
+        sum2=a2+b2;
+        if(sum2<=num2){
+         total+=sum2;
+         System.out.print(sum2+" ");
+        }
+        a2=b2;
+        b2=sum2;
+      }
+    }
+    System.out.println();
+    System.out.println("Sum = "+total);
+  }
+}

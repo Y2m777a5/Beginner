@@ -1,0 +1,30 @@
+import java.util.Scanner;
+public class String_Task_02 {
+  
+  
+  public static void main(String[] args) { 
+    Scanner sc = new Scanner(System.in);
+    System.out.println("String_Task_02");
+    String str = sc.next();
+    int len = str.length();
+    String nstr = "";
+    for(int i=0; i<len; i++){
+      int lttr = (int)str.charAt(i);
+      if(lttr>=(int)'A' && lttr<=(int)'Z'){
+        lttr-=32;
+      }
+      nstr+=(char)lttr;
+    }
+    String nstr2 ="";
+    for(int i=0; i<nstr.length(); i++){
+      int ch = (int)nstr.charAt(i);
+      if(ch == (int)'a'){
+        nstr2 +=""+'z';
+      }
+      else{
+        nstr2+=(char)(ch-=1);
+      }
+    }
+    System.out.println(nstr2);
+  }
+}

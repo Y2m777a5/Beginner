@@ -1,0 +1,388 @@
+//Task_01;
+import java.util.Scanner;
+public class Task_01 {
+  
+  
+  public static void main(String[] args) {
+    
+    System.out.println("Task_01");
+    System.out.println();
+    
+    //Task_A
+    System.out.println("Task_A");
+    int x = 24101224;
+    System.out.println(x);
+    System.out.println();
+    
+    //Task_B
+    System.out.println("Task_B");
+    int y = 24101225;
+    System.out.println(x+y);
+    System.out.println();
+    
+    //Task_C
+    System.out.println("Task_C");
+    System.out.println("Multiplication :"+ x*y);
+    System.out.println("Division :"+ x/y);
+    System.out.println();
+    
+    //Task_D
+    System.out.println("Task_D");
+    double x2 = 2.004d;
+    System.out.println(x2);
+    double y2 = 2.005d;
+    System.out.println(x2+y2);
+    System.out.println("Multiplication :"+ x2*y2);
+    System.out.println("Division :"+ x2/y2);
+    System.out.println();
+    
+    //Task_E
+    System.out.println("Task_E");
+    double x3 = 2.004d;
+    System.out.println(x3);
+    int y3 = 24101224;
+    System.out.println(x3+y3);
+    System.out.println("Multiplication :"+ x3*y3);
+    System.out.println("Division :"+ x3/y3);
+    System.out.println();
+    
+    //Task_F
+    System.out.println("Task_F");
+    String x4 = "Hello";
+    System.out.println(x4);
+    String y4 = "WORlD!";
+    System.out.println(x4+y4);
+    
+    int x5 = 24101224;
+    String y5 ="Student ID";
+    System.out.println(x5+y5);
+    
+    String x6 ="Student ID";
+    int y6 = 24101224;
+    System.out.println(x6+y6);
+    System.out.println();
+    
+    //Task_G
+    System.out.println("Task_G");
+    Scanner sc = new Scanner(System.in);
+    int a = sc.nextInt();
+    System.out.println(a);
+    int b = sc.nextInt();
+    System.out.println(a+b);
+    sc.close();
+  }
+  
+}
+
+
+//Task_02;
+public class Task_02 {
+  
+  
+  public static void main(String[] args) {
+    
+    System.out.println("Task_02");
+    
+    //Approach_1;
+    int x = 5;
+    int y = 6;
+    int z = y;
+    y = x;
+    x = z;
+    System.out.println(x);
+    System.out.println(y);
+    
+    //Approach_2;
+    int a = 5;
+    int b = 6;
+    a=(a+b);
+    b=a-b;
+    a-=b;
+    System.out.println(a);
+    System.out.println(b);
+  }
+
+}
+
+
+
+//Task_03;
+public class Task_03 {
+  
+  
+  public static void main(String[] args) { 
+    
+    System.out.println("Task_03");
+    
+    int stId = 24101224;
+    int last = stId%10;
+    System.out.println(last);
+    
+    int l2 = 24101224%100;
+    int last2 = l2/10;
+    System.out.println(last2);
+  }
+
+}
+
+
+//Task_04;
+import java.util.Scanner;
+public class Task_04 {
+  
+  
+  public static void main(String[] args) { 
+    
+    System.out.println("Task_04");
+    
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Please enter positive number :");
+    int n = sc.nextInt();
+    int i = 1;
+    
+    System.out.println(n+" x "+ i +" = "+(n*i++));
+    System.out.println(n+" x "+ i +" = "+(n*i++));
+    System.out.println(n+" x "+ i +" = "+(n*i++));
+    System.out.println(n+" x "+ i +" = "+(n*i++));
+    System.out.println(n+" x "+ i +" = "+(n*i++));
+    System.out.println(n+" x "+ i +" = "+(n*i++));
+    System.out.println(n+" x "+ i +" = "+(n*i++));
+    System.out.println(n+" x "+ i +" = "+(n*i++));
+    System.out.println(n+" x "+ i +" = "+(n*i++));
+    System.out.println(n+" x "+ i +" = "+(n*i++));
+    sc.close();
+  }
+
+}
+
+
+//Task_05;
+import java.util.Scanner;
+public class Task_05 {
+  
+  
+  public static void main(String[] args) { 
+    
+    System.out.println("Task_05");
+    
+    Scanner sc = new Scanner(System.in);
+    int n1 = sc.nextInt();
+    int n2 = sc.nextInt();
+    int n3 = sc.nextInt();
+    
+    if(n1>n2 && n1>n3){
+      System.out.println("Largest number: "+n1);
+    }
+    
+    else if(n2>n1 && n2>n3){
+      System.out.println("Largest number: "+n2);
+    }
+    
+    else{
+      System.out.println("Largest number: "+n3);
+    }
+    sc.close();
+  }
+
+}
+
+
+//Task_06;
+import java.util.Scanner; 
+public class Task_06 {
+  
+  
+  public static void main(String[] args) { 
+    
+    System.out.println("Task_06");
+    
+    Scanner sc = new Scanner(System.in);
+    int year = sc.nextInt();
+    
+    if(year%400==0 || (year%4==0 && year%100!=0)){
+      System.out.println(year+" is a leap year");
+    }
+    
+    else{
+      System.out.println(year+" is not a leap year");
+    }
+    sc.close();
+  }
+
+}
+
+
+//Task_07;
+import java.util.Scanner;
+public class Task_07 {
+  
+  
+  public static void main(String[] args) { 
+    
+    System.out.println("Task_07");
+    
+    Scanner sc = new Scanner(System.in);
+    int num = sc.nextInt();
+    
+    if(num%5==0 && num%7==0){
+      System.out.println("Divisible by Both");
+    }
+    
+    else if(num%5==0){
+      System.out.println("Invalid: Divisible by 5 Only");
+    }
+    
+    else if(num%7==0){
+      System.out.println("Invalid: Divisible by 7 Only");
+    }
+    
+    else{
+      System.out.println("No");
+    }
+    sc.close();
+  }
+
+}
+
+
+//Task_08;
+import java.util.Scanner;
+public class Task_08 {
+  
+  
+  public static void main(String[] args) { 
+    
+    System.out.println("Task_08");
+    
+    Scanner sc = new Scanner(System.in);
+    int stid = sc.nextInt();
+    
+    int year = stid/1000000;
+    int seas = (stid/100000)%10;
+    
+    if(seas == 1){
+      System.out.println("Student Joined BRAC in Spring "+year);
+    }
+    
+    else if(seas == 2){
+      System.out.println("Student Joined BRAC in Fall "+year);
+    }
+    
+    else if(seas == 3){
+      System.out.println("Student Joined BRAC in Summer "+year);
+    }
+    sc.close();
+  }
+
+}
+
+
+//Task_09;
+import java.util.Scanner;
+public class Task_09 {
+  
+  
+  public static void main(String[] args) { 
+    
+    System.out.println("Task_09");
+    
+    Scanner sc = new Scanner(System.in);
+    float cgpa = sc.nextFloat();
+    int crdt = sc.nextInt();
+    
+    if (crdt >=30){
+      
+      if(cgpa>=3.80 && cgpa<=3.89){
+        System.out.println("The student is eligible for a waiver of 25 percent");
+      }
+      
+      else if(cgpa>=3.90 && cgpa<=3.94){
+        System.out.println("The student is eligible for a waiver of 50 percent");
+      }
+      
+      else if(cgpa>=3.95 && cgpa<=3.99){
+        System.out.println("The student is eligible for a waiver of 75 percent");
+      }
+      
+      else if(cgpa==4.00){
+        System.out.println("The student is eligible for a waiver of 100 percent");
+      }
+      
+      else{
+        System.out.println("The student is not eligible for a waiver");
+      }
+    }
+    
+    else{
+      System.out.println("The student is not eligible for a waiver");
+    }
+    sc.close();
+  }
+
+}
+
+
+//Task_10;
+import java.util.Scanner;
+public class Task_10 {
+  
+  
+  public static void main(String[] args) { 
+    
+    System.out.println("Task_10");
+    
+    Scanner sc = new Scanner(System.in);
+    int num = sc.nextInt();
+    
+    if(num%2==0 && num%5==0){
+      System.out.println("Multiple of 2 and 5 both");
+    }
+    
+    else if(num%2==0){
+      System.out.println(num);
+    }
+    
+    else if(num%5==0){
+      System.out.println(num);
+    }
+    
+    else{
+      System.out.println("Not a multiple we want");
+    }
+    sc.close();
+  }
+
+}
+
+
+//Task_11;
+import java.util.Scanner;
+public class Task_11 {
+  
+  
+  public static void main(String[] args) { 
+    
+    System.out.println("Task_11");
+    
+    Scanner sc = new Scanner(System.in);
+    int x = sc.nextInt();
+    
+    if(x<0){
+      System.out.println(x*2);
+    }
+    
+    else if(x>=0 && x<2){
+      System.out.println(x+1);
+    }
+    
+    else if(x>=2 && x<5){
+      System.out.println((x*x)-1);
+    }
+    
+    else{
+      System.out.println((3*x*x)+2);
+    }
+    sc.close();
+  }
+
+}

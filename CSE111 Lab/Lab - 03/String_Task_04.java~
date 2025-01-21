@@ -1,0 +1,64 @@
+import java.util.Scanner;
+public class String_Task_04 {
+  
+  
+  public static void main(String[] args) { 
+    Scanner sc = new Scanner(System.in);
+    int total = 0;
+    String nstr = "";
+    while(total!=1){
+      String str = sc.next();
+      int len = str.length();
+      nstr = "";
+      total=1;
+      for(int i=0; i<len; i++){
+        int lttr = (int)str.charAt(i);
+        if(lttr>=(int)'A' && lttr<=(int)'Z'){
+          lttr+=32;
+        }
+        nstr+=(char)lttr;
+      }
+      //System.out.println(nstr);
+    
+      for(int i=0; i<len; i++){
+        int count = 0;
+        boolean flag = true;
+        char chr = nstr.charAt(i);
+        for(int k=i-1; k>=0 && i!=0; k--){
+          char chr1 = nstr.charAt(i);
+          char chr2 = nstr.charAt(k);
+          if(chr1==chr2){
+            flag = false;
+            break;
+          }
+        }
+        if(flag){
+          for(int j=0; j<len; j++){
+            char chr11 = nstr.charAt(i);
+            char chr12 = nstr.charAt(j);
+            if(chr11==chr12){
+              count++;
+            }
+          }
+        }
+        if(count>1){
+          System.out.println("\""+chr+"\" has been counted "+count+" times in the word");
+          System.out.println("\""+nstr+"\".");
+          if(count>total){
+            total=count;
+          }
+        }
+      }
+      if(total>1){
+        System.out.println("Please enter another word.");
+      }
+    }
+    if(total==1){
+      System.out.println("You entered "+nstr);
+    }
+    
+  }
+  
+  /* ADD YOUR CODE HERE */
+  
+}

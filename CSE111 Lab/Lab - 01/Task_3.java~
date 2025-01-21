@@ -1,0 +1,14 @@
+
+public class Task_3 {
+  
+  
+  public static void main(String[] args) { 
+    int stId = 24101224;
+    int last = 24101224%1000000;
+    System.out.println(last);
+    int l2 = 24101224%100000;
+  }
+  
+  /* ADD YOUR CODE HERE */
+  
+}

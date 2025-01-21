@@ -1,0 +1,48 @@
+
+public class UniversityTester {
+  
+  
+  public static void main(String[] args) { 
+    University u1 = new University();
+    University u2 = new University();
+    
+    //Task_1A
+    System.out.println("Location of object1: "+u1);
+    System.out.println("Location of object1: "+u2);
+    System.out.println(u1.name);
+    System.out.println(u1.country);
+    System.out.println(u2.name);
+    System.out.println(u2.country);
+    if(u1.equals(u2)){
+      System.out.println("Equal");
+    }
+    else{
+      System.out.println("Not equal");
+    }
+    
+    //Task_1B
+    u1.name = "Imperial College London";
+    u1.country = "England";
+    u2.name = "Brac University";
+    u2.country = "Bangladesh";
+    System.out.println(u1.name);
+    System.out.println(u1.country);
+    System.out.println(u2.name);
+    System.out.println(u2.country);
+    
+    if(u1.name.equals(u2.name)){
+      System.out.println("Equal");
+    }
+    else{
+      System.out.println("Not equal");
+    }
+    
+    if(u1.country.equals(u2.country)){
+      System.out.println("Equal");
+    }
+    else{
+      System.out.println("Not equal");
+    }
+  }
+}
+

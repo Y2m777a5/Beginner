@@ -1,0 +1,375 @@
+//Task_01
+
+public class Student {
+  public String name;
+  public String prog;
+  
+  public Student(String name, String prog) { 
+    this.name=name;
+    this.prog=prog;
+  }
+  
+  public void updateName(String name){
+    this.name=name;
+  }
+  
+  public void updateProgram(String prog){
+    this.prog=prog;
+  }
+  
+  public String accessName(){
+    return name;
+  }
+  
+  public String accessProgram(){
+    return prog;
+  }
+}
+
+
+
+
+//Task_02
+
+public class Toy {
+  public String name;
+  public int price;
+  
+  public Toy(String name, int price) {
+    System.out.println("A new toy has been made!");
+    this.name=name;
+    this.price=price;
+  }
+  
+  public void updatePrice(int price){
+    this.price=price;
+  }
+  
+  public void updateName(String name){
+    System.out.println("Changing old name: "+this.name);
+    this.name=name;
+    System.out.println("new name: "+this.name);
+  }
+  
+  public void showPrice(){
+    System.out.println("price: "+price+" Taka");
+  }
+}
+
+
+
+//Task_03
+
+public class Parcel {
+  public String name;
+  public int weight=0;
+  public double fee=0.0;
+  
+  public Parcel() {
+  }
+   
+  public Parcel(String name) {
+    this.name=name;
+  }
+  
+  public Parcel(String name, int weight) { 
+    this.name=name;
+    this.weight=weight;
+  }
+  
+  public void printDetails(){
+    if(name==null){
+      System.out.println("Set name first");
+    }
+    else{
+      System.out.println("Name: "+name);
+      System.out.println("Total Weight: "+weight);
+      System.out.println("Total Fee: "+fee);
+    }
+  }
+  
+  public void calcFee(String loc){
+    if(loc.equals("Dhanmondi")){
+      fee = (weight*20)+50;
+    }
+    else{
+      fee = (weight*20);
+    }
+  }
+  
+  public void addWeight(int weight){
+    this.weight+=weight;
+    System.out.println("Updated Weight: "+this.weight);
+  }
+}
+
+
+
+
+//Task_04
+
+public class Shape2D {
+  public double area;
+  public String name;
+  public Shape2D(int side) { 
+    name= "Square";
+    System.out.println("A Square has been created with length: "+side);
+    area= side*side;
+  }
+  
+  public Shape2D(int side1, int side2) { 
+    name= "Rectangle";
+    System.out.println("A Rectangle has been created with length: "+side1+" and breadth:  "+side2);
+    area= side1*side2;
+  }
+  
+  public Shape2D(int side1, int side2, String name) { 
+    this.name=name;
+    System.out.println("A "+name+" has been created with height: "+side1+" and base:  "+side2);
+    area= 0.5*side1*side2;
+  }
+  
+  public Shape2D(int side1, int side2, int side3) { 
+    this.name= "Triangle";
+    System.out.println("A Triangle has been created with the following sides: "+side1+", "+side2+", "+side3);
+    int s= (side1+side2+side3)/2;
+    area= Math.sqrt(s*(s-side1)*(s-side2)*(s-side3));
+  }
+  
+  public void area(){
+    System.out.println("The area of the "+name+" is: "+area);
+  }
+}
+
+
+
+//Task_05
+
+public class Book {
+    public String ttl;
+    public String athr;
+    public int price = 0;
+
+    public Book (String ttl){
+        this.ttl = ttl;
+    }
+
+    public Book (String ttl, String athr){
+        this.ttl = ttl;
+        this.athr = athr;
+    }
+
+    public Book (String ttl, String athr, int price){
+        this.ttl = ttl;
+        this.athr = athr;
+        this.price = price;
+    }
+
+    public void setDetails (int price){
+        this.price = price;
+    }
+
+    public void setDetails (String athr, int price){
+        this.athr = athr;
+        this.price = price;
+    }
+
+    public void displayDetails (){
+        if(!(ttl==null)){
+            System.out.print("Title: "+ttl);
+        }
+        if(!(athr==null)){
+            System.out.print(", Author: "+athr);
+        }
+        if(!(price==0)){
+            System.out.print(", Price: "+price);
+        }
+        System.out.println();
+    }
+}
+
+
+
+
+//Task_06
+
+public class Product {
+  public String name;
+  public double price;
+  public int quantity;
+  public Product() { 
+    name = "Unknown";
+    price = 0.0;
+  }
+  
+  public Product(String name, double price) { 
+    this.name = name;
+    this.price = price;
+  }
+  
+  public void setQuantity(int n){
+    quantity=n;
+  }
+  
+  public double getPrice(){
+    return price;
+  }
+  
+  public double getQuantity(){
+    return quantity;
+  }
+  
+  public void displayInfo(){
+    System.out.println("Product Name: "+name);
+    System.out.print("Price: $"+price);
+  }
+  
+  public void displayInfo(boolean flag){
+    System.out.println("Product Name: "+name);
+    System.out.println("Price: $"+price);
+    System.out.println("Quantity: "+quantity);
+  }
+}
+
+
+
+
+
+//Task_07
+
+public class Student {
+    private int id;
+    private double cg;
+    public String [] course = new String [4];
+    public int count=0;
+
+    public Student (int id){
+        this.id=id;
+    }
+
+    public Student (int id, double cg){
+        this.id=id;
+        this.cg=cg;
+    }
+
+    public void setCG(double cg){
+        this.cg=cg;
+    }
+
+    public void setID(int id){
+        this.id=id;
+    }
+
+    public void addCourse (String cname){
+        if(cg>0.0){
+            if(cg<3.0){
+                if(count<3){
+                    course[count++]=cname;
+                }
+                else{
+                    System.out.println("Failed to add "+cname+"\nCG is low. Can't add more than 3 courses.");
+                }
+            }
+            else{
+                if(count<4){
+                    course[count++]=cname;
+                }
+                else{
+                    System.out.println("Failed to add "+cname+"\nMaximum 4 courses allowed.");
+                }
+            }
+        }
+        else{
+            System.out.println("Failed to add "+cname+"\nSet CG first");
+        }
+    }
+
+    public void addCourse (String courses[]){
+        for(int i=0;i<courses.length;i++){
+            addCourse(courses[i]);
+        }
+    }
+
+    public void rmAllCourse(){
+        course = new String [4];
+        count=0;
+    }
+
+    public void showAdvisee (){
+        System.out.println("Student ID: "+id+", CGPA: "+cg);
+        if(count>0){
+            System.out.println("Added courses are:");
+            for(int i=0; i<count; i++){
+                if(!(i==(count-1))){
+                    System.out.print(course[i]+" ");
+                }
+                else{
+                    System.out.println(course[i]);
+                }
+            }
+        }
+        else{
+            System.out.println("No courses added.");
+        }
+    }
+}
+
+
+
+
+//Task_08
+
+public class ABCServer {
+    public String sname = "Default";
+    public String [] member = new String [10];
+    public String [] role = new String [10];
+    public int capacity = 10;
+    public int count;
+    public String rname;
+    public boolean flag = false;
+
+    public ABCServer(){}
+
+    public ABCServer(String sname, int capacity){
+        this.sname = sname;
+        member = new String [capacity];
+        role = new String [capacity];
+        this.capacity = capacity;
+    }
+
+    public void addMembers (String mname){
+        if(count<capacity){
+            member[count] = mname;
+            if(flag){
+                role[count]=rname;
+                flag = false;
+            }
+            else{
+                role[count]="Rising Hero";
+            }
+            System.out.println(role[count++]+" is added.");
+        }
+        else{
+            System.out.println("Sorry, maximum capacity exceeded");
+        }
+    }
+
+    public void addMembers (String mname, String rname){
+        this.rname=rname;
+        flag = true;
+        addMembers(mname);
+    }
+
+    public void details (){
+        System.out.println("Server Name: "+sname);
+        System.out.println("Member Capacity: "+capacity);
+        System.out.println("Total Members: "+count);
+        System.out.println("Members:");
+        if(count>0){
+            for(int i=0; i<count; i++){
+                System.out.println("Name:Role --> "+member[i]+":"+role[i]);
+            }
+        }
+    }
+}
+

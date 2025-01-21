@@ -1,0 +1,219 @@
+//Task_01
+
+public class UniversityTester {
+  
+  
+  public static void main(String[] args) { 
+    University u1 = new University();
+    University u2 = new University();
+    
+    //Task_1A
+    System.out.println("Location of object1: "+u1);
+    System.out.println("Location of object1: "+u2);
+    System.out.println(u1.name);
+    System.out.println(u1.country);
+    System.out.println(u2.name);
+    System.out.println(u2.country);
+    if(u1.equals(u2)){
+      System.out.println("Equal");
+    }
+    else{
+      System.out.println("Not equal");
+    }
+    
+    
+    //Task_1B
+    String old_name1= u1.name;
+    String old_name2= u2.name;
+    String old_country1= u1.country;
+    String old_country2= u2.country;
+    
+    u1.name = "Imperial College London";
+    u1.country = "England";
+    u2.name = "Brac University";
+    u2.country = "Bangladesh";
+    
+    if(u1.name.equals(old_name1) && u1.country.equals(old_country1)){
+      System.out.println("1st object is remaining Same.");
+    }
+    else{
+      System.out.println("1st object has Changed.");
+    }
+       
+    if(u2.name.equals(old_name2) && u2.country.equals(old_country2)){
+      System.out.println("2nd object is remaining Same.");
+    }
+    else{
+      System.out.println("2nd object has Changed.");
+    }
+    
+    System.out.println(u1.name);
+    System.out.println(u1.country);
+    System.out.println(u2.name);
+    System.out.println(u2.country);
+    
+    if(u1.name.equals(u2.name)){
+      System.out.println("Instance variable (name) is same.");
+    }
+    else{
+      System.out.println("Instance variable (name) is not same.");
+    }
+    
+    if(u1.country.equals(u2.country)){
+      System.out.println("Instance variable (country) is same.");
+    }
+    else{
+      System.out.println("Instance variable (country) is not same.");
+    }
+  }
+}
+
+
+
+
+
+//Task_02
+
+      Circle crcl = new Circle();
+      double pi = Math.PI;
+      System.out.println("Radius of the circle is "+crcl.radius);
+      System.out.println("Radius of the circle is "+(pi*crcl.radius*crcl.radius));
+      System.out.println("The circumference of the circle is"+(2*pi*crcl.radius));
+
+
+
+
+//Task_03
+
+public class Student {
+  
+  public String name="Bob";
+  public int id=1;
+  
+}
+
+
+
+//Task_04
+
+public class Vehicle {
+  public String type = "Car";
+  public int wheels = 4;
+  public String color = "White";
+}
+
+
+
+//Task_05
+
+public class Tournament {
+  public String name;
+  public String sportsType;
+  public int numberOfTeams = 0;
+  public String [] teams;
+}
+
+
+
+
+//Task_06
+
+public class ImaginaryNumber {
+  public int realPart = 0;
+  public int imaginaryPart = 0;
+  public void printNumber(){
+    System.out.println(realPart+" + "+imaginaryPart+"i");
+  }
+}
+
+
+
+
+//Task_07
+
+public class Cat {
+  public String color = "White";
+  public String action = "sitting";
+  public void printCat(){
+    System.out.println(color+" cat is "+action);
+  }
+}
+
+
+
+
+//Task_08
+
+public class Bird {
+  public String name;
+  public int dstnc = 0;
+  
+  public void makeNoise(){
+    if(name.equals("Parrot")){
+      System.out.println("Squawk");
+    }
+    else{
+      System.out.println("Squee");
+    }
+  }
+  
+  public void flyUp(int up){
+    dstnc+=up;
+    System.out.println(name+" has flown up "+up+" feet.");
+  }
+  
+  public void flyDown(int down){
+    boolean flag = false;
+    if(dstnc<down){
+      System.out.println(name+" cannot fly down "+down+" feet.");
+    }
+    else{
+      dstnc-=down;
+      flag = true;
+    }
+    if(dstnc>0 && flag){
+      System.out.println(name+" has flown down "+down+" feet.");
+    }
+    else if(dstnc==0 && flag){
+      System.out.println(name+" has flown down "+down+" feet and landed.");
+    }
+  }
+}
+
+
+
+
+//Task_09
+
+public class CellPhone {
+  public String model = "unknown";
+  public int count = 0;
+  public String [] cStore = new String [3];
+  
+  public void storeContact(String temp){
+    if(count==0){
+      cStore[count]=temp;
+      count++;
+      System.out.println("Contact Stored");
+    }
+    else if(count<3){
+      cStore[count]=temp;
+      count++;
+      System.out.println("Contact Stored");
+    }
+    else{
+      System.out.println("Memory full. New contact can't be stored.");
+    }
+  }
+  
+  public void printDetails(){
+    System.out.println("Phone Model "+model);
+    System.out.println("Contacts Stored "+count);
+    if(count>=1){
+      System.out.println("Stored Contacts:");
+      for(int i=0; i<count; i++){
+        System.out.println(cStore[i]);
+      }
+    }
+  }
+}

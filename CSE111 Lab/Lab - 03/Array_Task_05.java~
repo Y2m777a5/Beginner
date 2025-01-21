@@ -1,0 +1,52 @@
+import java.util.Scanner;
+public class Array_Task_05 {
+  
+  
+  public static void main(String[] args) { 
+    Scanner sc = new Scanner(System.in);
+    System.out.print("N = ");
+    int inp = sc.nextInt();
+    int [] arr = new int [inp];
+    System.out.println("Please enter the elements of the array:");
+    for(int i=0; i<inp; i++){
+      arr[i] = sc.nextInt();
+    }
+    int count = 0;
+    for(int i=0; i<inp; i++){
+      if(i!=0 && arr[i]==arr[i-1]){
+        count++;
+      }
+      else{
+        continue;
+      }
+    }
+    int [] narr = new int [inp-count];
+    int e=0;
+    for(int i=0; i<inp; i++){
+      if(i==0){
+        narr[e]=arr[i];
+        e++;
+      }
+      else if(arr[i]==arr[i-1]){
+        continue;
+      }
+      else{
+        narr[e]=arr[i];
+        e++;
+      }
+    }
+    System.out.print("New Array : ");
+    for(int i=0; i<(inp-count); i++){
+      if(i!=(inp-count-1)){
+       System.out.print(narr[i]+" ");
+      }
+      else{
+        System.out.println(narr[i]);
+      }
+    }
+    System.out.println("Removed elements : "+count);
+  }
+  
+  /* ADD YOUR CODE HERE */
+  
+}

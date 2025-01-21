@@ -1,0 +1,42 @@
+
+public class ChickenBurger {
+  public String slvl = {"Mild", "Spicy", "Naga", "Extreme"};
+  public String bun = "Sesame";
+  public int price = 200;
+  public String sauceOption = "Less";
+  public String spicelevel = "Not set";
+  
+  public String serveBurger(){
+    boolean flag = false;
+    for(int i=0; i<slvl.length; i++){
+      if(spicelevel.equals(slvl[i])){
+        flag = true;
+      }
+    }
+    if(flag){
+      return "The burger is being served:-"+
+        "\nBun Type: "+bun+
+        "\nPrice: "+price+
+        "\nSauce Option: "+sauceOption+
+        "\nSpice Level: "+spicelevel;
+    }
+    else{
+      return "Cannot serve now. Customize Spice Level first."
+    }
+  }
+  
+  public void customizeSpiceLevel(String spice){
+    boolean flag = false;
+    for(int i=0; i<slvl.length; i++){
+      if(spice.equals(slvl[i])){
+        spicelevel = spice;
+      }
+    }
+    if(flag){
+      System.out.println("Spice level set to "+spicelevel);
+    }
+    else{
+      System.out.println("This spice level is unavailable.");
+    }
+  }
+}
