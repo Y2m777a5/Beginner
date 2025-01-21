@@ -1,2 +1,0 @@
-# Beginer
-Versity codes
