@@ -1,0 +1,32 @@
+import java.util.Scanner;
+public class Task_1 {
+  
+  
+  public static void main(String[] args) { 
+    Scanner sc = new Scanner(System.in);
+    String str = sc.nextLine();
+    String out = "";
+    String sout = "";
+    
+    for(int i=str.length()-1; i>=0; i--)
+    {
+      String str1 = ""+ str.charAt(i);
+      if(str1.equals(" ") || i==0)
+      {
+        if(i==0){
+       out+=str.charAt(i);}
+       for(int j=out.length()-1; j>=0; j--)
+       {
+        sout +=out.charAt(j);
+       }
+       sout += " ";
+       out="";
+      }
+      else
+      { 
+       out+=str.charAt(i);       
+      }
+    }
+    System.out.print(sout);
+  }
+}

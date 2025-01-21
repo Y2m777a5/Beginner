@@ -1,0 +1,44 @@
+import java.util.Scanner;
+public class Task_5 
+{ 
+  
+  public static void main(String[] args)
+  { 
+    Scanner sc= new Scanner(System.in);
+    int num = sc.nextInt();
+    int space = num-1;
+    
+    for(int i=1; i<=num; i++)
+    {
+      for(int k=space; k>0; k--)
+      {
+        System.out.print("  ");
+      }
+      space--;
+      int h=2*i-1;
+      if(i==1 || i==num)
+      {
+        for(int j=1; j<=h; j++)
+        {
+          System.out.print(j+" ");
+        }
+      }
+      else
+      {
+        for(int j=1; j<=h; j++)
+        {
+          if(j==1 || j==h)
+          {
+            System.out.print(j+" ");
+          }
+          else
+          {
+            System.out.print("  ");
+          }
+        }
+      }
+      System.out.println();
+    }
+    sc.close();
+  } 
+}

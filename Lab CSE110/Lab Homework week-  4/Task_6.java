@@ -1,0 +1,42 @@
+import java.util.Scanner;
+public class Task_6
+{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("number ");
+        int n = sc.nextInt();
+        int i=2;
+        int prime=0;
+        int sum =0;
+        while(i<n)
+        {
+            int r=n%i;
+            if(r==0)
+            {
+              prime++;sum=sum+i;
+            }
+            i++;
+        }
+        sum++;
+        
+        if(prime==0)
+        {
+          System.out.println(n+" is a prime number");
+            System.out.println(n+" is not a perfect number");
+        }
+        else if (prime!=0)
+        {
+          System.out.println(n+" is not a prime number");
+            if (n==sum)
+            {
+              System.out.println(n+" is a perfect number");
+            }
+           else
+           {
+             System.out.println(n+" is not a perfect number");
+           }
+       }
+        
+    }
+} 

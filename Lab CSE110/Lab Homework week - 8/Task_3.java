@@ -1,0 +1,56 @@
+import java.util.Scanner;
+public class Task_3 {
+  
+  
+  public static void main(String[] args) { 
+    Scanner sc = new Scanner(System.in);
+    String str1 = sc.nextLine().toLowerCase();
+    String str2 = sc.nextLine().toLowerCase();
+    int count = 0;
+    
+    // for printing 1st string;
+    for(int i=0; i<str1.length(); i++)
+    {
+     String nStr1 = "" + str1.charAt(i);
+     for(int j=0; j<str2.length(); j++)
+     {
+       String nStr2 = "" + str2.charAt(j);
+       if(nStr1.equals(nStr2))
+       {
+        count++;
+       }
+     }
+     if(count==0)
+     {
+      System.out.print(nStr1.toUpperCase());
+     }
+     else
+     {
+      count = 0;
+     }
+    }
+    //for printing 2nd string;
+    count=0;
+    for(int i=0; i<str2.length(); i++)
+    {
+     String nStr2 = "" + str2.charAt(i);
+     for(int j=0; j<str1.length(); j++)
+     {
+       String nStr1 = "" + str1.charAt(j);
+       if(nStr2.equals(nStr1))
+       {
+        count++;
+       }
+     }
+     if(count==0)
+     {
+      System.out.print(nStr2.toUpperCase());
+     }
+     else
+     {
+      count = 0;
+     }
+    }
+    sc.close();
+  }
+}

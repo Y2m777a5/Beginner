@@ -1,0 +1,24 @@
+import java.util.Scanner;
+public class Task_1 {
+  
+  
+  public static void main(String[] args) { 
+    Scanner sc = new Scanner(System.in);
+    System.out.print("Input number of terms:");
+    int n = sc.nextInt();
+    int i = 1; 
+    int x = 1;
+    int sum = 0;
+    System.out.println("The odd numbers are: ");
+    while(i<=n){     
+    System.out.println(x);
+    sum=sum+x;
+    x=x+2;
+   i=i+1;
+  }
+  System.out.println("The Sum of odd Natural Numbers up to"+ n +"terms is: "+sum);
+  }
+  
+  /* ADD YOUR CODE HERE */
+  
+}

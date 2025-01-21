@@ -1,0 +1,57 @@
+import java.util.Scanner;
+public class Task_71
+{ 
+ public static void main(String[] args) 
+ { 
+    Scanner sc = new Scanner(System.in);
+        System.out.println("Price");
+        int pri = sc.nextInt();
+        System.out.println("customer");
+        int cus = sc.nextInt();
+        int i=7;
+        int n = 100;
+        if(cus>pri){
+        int tbr = cus-pri;
+        System.out.println("The returned amount is "+tbr+" taka.");
+        while(i>=1)
+        {
+        int tbrN= tbr/n;
+            if(n<=100 && n>=10)
+            {
+                System.out.println(n+" taka in note: "+tbrN);
+            }
+            else {
+                System.out.println(n+" taka in coin: "+tbrN);
+            } 
+             cus = tbr;
+             pri = tbrN*n;
+             tbr = cus - pri;
+             n = n/2;
+            if (n==25)    
+            {
+                n=n-5;
+            }
+            else if (n==0)  
+            {
+                break;
+            }
+            else
+            {
+              n=n;
+            }
+            i++; 
+        }
+        }
+        else if (cus<pri)
+            
+        {
+            System.out.println("please pay "+(pri-cus)+" taka more");
+        }
+        else
+            
+        {
+            System.out.println("The returned amount is 0 taka");
+        }
+
+        
+ }}

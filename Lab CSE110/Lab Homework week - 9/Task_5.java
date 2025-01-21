@@ -1,0 +1,41 @@
+import java.util.Scanner;
+public class Task_5 {
+  
+  
+  public static void main(String[] args) { 
+    Scanner sc = new Scanner(System.in);
+        System.out.print("N = ");
+        int N = sc.nextInt();
+        int [] arr = new int [N];
+        for(int i=0; i<N;i++){
+            System.out.print("Enter a number: ");
+            arr [i]= sc.nextInt();
+            System.out.println();
+        }
+        System.out.println("Original Array:");
+        for(int i=0; i<arr.length;i++){
+           if(i!=arr.length-1){
+             System.out.print(arr[i]+" ");}
+           else{
+             System.out.println(arr[i]);}
+        }
+        for (int i = 0; i < arr.length - 1; i++){
+          int max_index = i;
+          for (int j = i + 1; j < arr.length; j++){
+            if (arr[j] > arr[max_index]){
+              max_index = j;
+            }
+          }
+          int temp = arr[max_index];
+          arr[max_index] = arr[i];
+          arr[i] = temp;
+        }
+        System.out.println("Sorted Array:");
+        for(int i=0; i<arr.length;i++){
+           if(i!=arr.length-1){
+             System.out.print(arr[i]+" ");}
+           else{
+             System.out.println(arr[i]);}
+        }
+  }
+}

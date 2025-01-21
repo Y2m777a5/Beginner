@@ -1,0 +1,21 @@
+import java.util.Scanner;
+public class Task_1 {
+  
+  public static void main(String[] args) { 
+    Scanner sc = new Scanner(System.in);
+    int col = sc.nextInt();
+    int row = sc.nextInt();
+    
+    for(int i=1; i<=row; i++)
+    {
+      for(int j=col; j>0; j--)
+      {
+        System.out.print(j);
+      }
+      System.out.println();
+    }
+  }
+  
+  /* ADD YOUR CODE HERE */
+  
+}

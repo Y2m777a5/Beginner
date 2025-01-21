@@ -1,0 +1,17 @@
+
+public class Task_7 {
+  
+  
+  public static void main(String[] args) { 
+    int sec = 23;
+    int min = 56;
+    int hour = 5;
+    float tHour = (hour+(min/60)+(sec/3600));
+    int meter = 2500;
+    float km = (meter/1000);
+    float miles = (meter/1609);
+    System.out.printf("Your velocity is km/h is %.7f\n",(km/tHour));
+    System.out.printf("Your velocity is miles/h is %.7f\n",(miles/tHour));
+  }
+ 
+}

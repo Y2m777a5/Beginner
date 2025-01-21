@@ -1,0 +1,33 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Task_1{
+    public static void main (String [] args){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("N = ");
+        int N = sc.nextInt();
+        double [] arr = new double [N];
+        double sum = 0;
+        for(int i=0; i<N;i++){
+            System.out.println("Enter a number: ");
+            arr [i]= sc.nextDouble();
+        }
+        int max=0;
+        int min=0;
+        for(int i=0; i<N;i++){
+            sum += arr[i];
+            for(int j=0; j<N; j++){
+                if(arr[j]>arr[i] && arr[j]>arr[max]){
+                     max = j;
+                }
+                if(arr[j]<arr[i] && arr[j]<arr[min]){
+                     min = j;
+                }
+            }
+        }
+        System.out.println("Maximum element "+ arr[max] +" found at index "+ max);
+        System.out.println("Minimum element "+ arr[min] +" found at index "+ min);
+        System.out.println("Summation: "+ sum);
+        System.out.println("Average: "+ (float)(sum/N));
+    }
+}
