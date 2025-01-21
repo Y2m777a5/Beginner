@@ -1,0 +1,13 @@
+import java.lang.Math;
+public class Task_8 {
+  
+  
+  public static void main(String[] args) { 
+    int a = 8;
+    int b = 3;
+    double c = Math.sqrt(((a/2)*(a/2))+(b*b));
+    double area = ((a*C)+(a*b));
+    System.out.printf("area %lf\n",area);
+  }
+
+}
