@@ -1,0 +1,8 @@
+public class Untitled-1
+{
+  public static void main(string[] args)
+  {
+    int [] arr1 = {24, -9, 11, 5};
+    System.out.println("Array = %f\n",arr1);
+  }
+}

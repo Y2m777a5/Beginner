@@ -1,0 +1,21 @@
+import java.util.Scanner;
+public class Hudai {
+    public static void main(String[]args){
+Scanner sc=new Scanner(System.in);
+int n=sc.nextInt();
+
+int m=n-1;
+
+for(int i=n;i>=0;i--){
+    System.out.print(i);
+    for(int j=m;j>=0;j--){
+    System.out.print(j);
+    
+    }
+    System.out.print("\n");
+    m--;
+}
+
+
+    }
+}
