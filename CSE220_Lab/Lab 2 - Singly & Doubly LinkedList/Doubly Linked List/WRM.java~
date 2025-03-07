@@ -1,0 +1,91 @@
+public class WRM {
+    Patient dh;
+
+    //The constructor is already created for you
+    public WRM() {
+        dh = new Patient(null, null, null, null, null, null);
+        dh.next = dh;
+        dh.prev = dh;
+    }
+
+    public void registerPatient(int id, String name, int age, String bloodgroup) {
+        // To Do  
+        Patient P = new Patient(id, name, age, bloodgroup, dh.prev, dh.next);
+        Patient last = dh.prev;
+        last.next = P;
+        P.prev = last;
+        P.next = dh;
+        dh.prev = P;
+        System.out.println("Patient registerd");
+    }
+
+    public void servePatient() {
+        // To do
+        Patient P = dh.next;
+        Patient temp = P.next;
+        temp.prev = dh;
+        dh.next = temp;
+        System.out.println("Served");
+        
+    }
+
+    public void showAllPatient() {
+        //To Do
+        Patient p = dh.next;
+        while(p!=dh){
+            if (p.next!=dh){
+                System.out.print(p.id+" -> ");
+            }
+            
+            else{
+                System.out.println(p.id);
+            }
+            p = p.next;
+        }
+    }
+
+    public boolean canDoctorGoHome() {
+        // To Do
+        if(dh.next!=null){
+            return true;
+        }
+        return false; // Delete this line once you're ready
+    }
+
+    public void cancelAll() {
+        // To Do
+        dh.next = dh;
+        dh.prev = dh;
+        System.out.println("Doctor will go to lunch.");
+    }
+
+
+    public void reverseTheLine() {
+        // To Do
+        Patient curr = dh;
+        Patient temp = null;
+        while(curr!=dh){
+            temp = curr.prev;
+            curr.prev = curr.next;
+            curr.next = temp; 
+            curr = curr.prev;
+        }
+        if(temp!=null){
+            dh = temp.prev;
+        }
+        // curr.prev = curr2;
+        // curr2.prev = curr3;
+        Patient p = dh.next;
+        while(p!=dh){
+            if (p.next!=dh){
+                System.out.print(p.id+" -> ");
+            }
+            
+            else{
+                System.out.println(p.id);
+            }
+            p = p.next;
+        }
+    }
+
+}

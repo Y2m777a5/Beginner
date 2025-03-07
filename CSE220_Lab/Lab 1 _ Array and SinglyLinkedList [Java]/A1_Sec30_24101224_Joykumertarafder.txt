@@ -1,0 +1,154 @@
+//Task_1
+
+public static Integer[] mergeSortedArray( Integer[] arr1, Integer[] arr2 ){
+
+        //TO DO
+        //DELETE the following return statement when you're ready to return the newly Created array
+        Integer [] arr = new Integer[arr1.length+arr2.length];
+        int i=0, j=0, count=0;
+        while(i<arr1.length && j<arr2.length){ //Inserts elements in an ascending order from both arrays
+            if(arr1[i]<arr2[j]){
+                arr[count]=arr1[i];
+                i++; count++;
+            }
+            else{
+                arr[count]=arr2[j];
+                count++; j++;
+            }
+        }
+        //Left over of any array elements inserts through below Loops
+        while(i<arr1.length){
+            arr[count]=arr1[i];
+            i++; count++;
+        }
+        while(j<arr2.length){
+            arr[count]=arr2[j];
+            count++; j++;
+        }
+        return arr;
+
+    }
+
+
+
+//Task_2
+
+public static void mostWater( Integer[] height ){
+
+        //TO DO
+        int max_water=0, y=0, xl=0, xr=height.length-1;
+        while(xl<xr){ //Taking values from btoh sides of x axis
+            int width = xr-xl;
+            if(height[xl]>height[xr]){ //Considering lower values as height so that water lavel doesn't exceed;
+               y = height[xr];
+               xr--;
+            }
+            else{
+                y = height[xl];
+                xl++;
+            }
+            int water = width*y; //Area
+            if(max_water<water || max_water==0){
+                max_water=water;
+            }
+        }
+        System.out.print(max_water);
+    }
+
+
+
+//Task_3
+
+public static String checkSimilar( Node building1, Node building2 ){
+        
+        //You're not suppose to create any new Linked List for this task
+        
+        //TODO
+
+        //Once you're ready to return the String delete the
+        //following line
+        int count1=0,count2=0;
+        Node temp1=building1, temp2=building2;
+        while(temp1!=null){
+            count1++;
+            temp1=temp1.next;
+        }
+        while(temp2!=null){
+            count2++;
+            temp2=temp2.next;
+        }
+        if(count1==count2){
+            boolean flag=true;
+            while(building1!=null && building2!=null){
+                if(building1.elem!=building2.elem){
+                    flag=false;
+                }
+                building1 = building1.next;
+                building2 = building2.next;
+            }
+            if(flag){
+                return "Similar";
+            }
+            else{
+                return "Not Similar";
+            }
+        }
+        else{
+            return "Not Similar";
+        }
+    }
+
+
+//Task_4
+
+ public static Boolean assembleCongaLine(Node head){
+        
+        //You're not suppose to create any new Linked List for this task
+
+        //TODO
+        //Hint: the Node elements are actually Object, you can type cast them
+        //      into int or Integer like the following:
+        //        (int)n.elem  or  (Integer)n.elem
+        
+        //When you're ready to return the boolean remove the following line
+        Node temp1= head.next; // Taking next element Node;
+        boolean flag = true;
+        while(temp1.next!=null){
+            if((int)head.elem>(int)temp1.elem){ // Comparing the elements;
+                flag = false;
+            }
+            head=head.next;
+            temp1=temp1.next;
+        }
+        return flag;
+    }
+
+
+
+//Task_5
+
+public static int sumDist(Node head, Integer[] distArr) {
+        // To Do
+        int i=0, sum=0, count=0;
+        Node n=head;
+        while(n!=null){
+            n=n.next;
+            count++;
+        }
+        while(i<distArr.length){ // Running an array
+            Node temp = head; // All time initializes a Node 
+            int j=0;
+            if(distArr[i]<count){ // Won't take value if it exceeds Node length;
+                while(j<distArr[i]){ // Taking Linked list to the designated address;
+                    temp=temp.next;
+                    j++;
+                }
+                sum+=(int)temp.elem;
+            }
+            else{
+                sum+=0;
+            }
+            i++;
+        }
+        return sum; // Remove this line.
+    }

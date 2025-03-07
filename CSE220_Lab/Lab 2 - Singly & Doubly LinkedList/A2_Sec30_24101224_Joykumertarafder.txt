@@ -1,0 +1,309 @@
+//Task_1
+
+public static Node alternateMerge( Node head1, Node head2 ){
+        
+        //You’re NOT ALLOWED to create a new singly linked list for this task
+
+        //TO DO
+        Node h1=head1, h2=head2;
+        while(h1!=null && h2!=null){
+            Node temp1 = h1.next;
+            Node temp2 = h2.next;
+            h1.next = h2;
+            h2.next = temp1;
+            h1 = temp1;
+            h2 = temp2;
+        }
+        //remove the following line when returning the Head of the modified LinkedList
+        return head1;
+    }
+
+
+
+
+//Task_2
+
+public static Node wordDecoder( Node head ){
+        
+        //You're suppose to create a new Dummy headed Singly Linked List in this method
+        //Dummy head is basically a head Node where the elem is null
+        // Node dHead = new Node(null, null); here the dHead is a Dummy Head
+
+        //TO DO
+        Node temp = head;
+        int count = 1;
+        while(temp.next!=null){
+            count++;
+            temp= temp.next;
+        }
+        int pos = 13%count;
+        int i = 1;
+        int dcount =0;
+        while(i<=count){
+            if(i%pos==0){
+                dcount++;
+            }
+            i++;
+        }
+        i=1;
+        int j=0;
+        Object [] arr = new Object [dcount];
+        while(head!=null){
+            if(i%pos==0){
+                arr[j] = head.next.elem;
+                j++;
+            }
+            i++;
+            head = head.next;
+        }
+        Node ntemp = new Node( arr[0] );
+        Node N = ntemp;
+        for ( i=1; i<arr.length; i++ ){
+            Node newN = new Node( arr[i] );
+            N.next = newN;
+            N = N.next;
+        }
+        i=0;
+        Node Dhead = new Node(null, null);
+        Node dhead = new Node(ntemp.elem,null);
+        Node temp1 = ntemp.next;
+        while(temp1!=null){
+            Node n = new Node(temp1.elem, dhead);
+            dhead = n;
+            temp1 = temp1.next;
+        }
+        Dhead.next = dhead;
+        //remove the following line when you're ready to return the new head
+        return Dhead;
+    }
+
+
+
+//Task_3
+
+public static Node idGenerator(Node head1, Node head2, Node head3) {
+        
+        //TO DO
+        //Hint: the Node elements are actually Object, you can type cast them
+        //      into int or Integer like the following:
+        //        (int)n.elem  or  (Integer)n.elem
+        Node head11 = new Node(head1.elem,null);
+        Node temp1 = head1.next;
+        while(temp1!=null){
+            Node n = new Node(temp1.elem, head11);
+            head11 = n;
+            temp1 = temp1.next;
+        }
+        int [] arr= new int [4];
+        int i=0;
+        while(head2!=null && head3!=null){
+            if((int)head2.elem+(int)head3.elem<10){
+                arr[i] = (int)head2.elem+(int)head3.elem;
+            }
+            else{
+                int temp = ((int)head2.elem+(int)head3.elem)%10;
+                arr[i] = temp; 
+            }
+            i++;
+            head2 = head2.next;
+            head3 = head3.next;
+        }
+        Node head23 = new Node( arr[0] );
+        Node N = head23;
+        for ( i=1; i<arr.length; i++ ){
+            Node newN = new Node( arr[i] );
+            N.next = newN;
+            N = N.next;
+        }
+        Node h1=head11;
+        while(h1.next!=null){
+            h1=h1.next;
+        }
+        h1.next=head23;
+        return head11; // Remove this when you're ready to return the new head
+    }
+
+
+
+//Task_4
+
+public class Patient{
+
+    public Integer id;
+    public String name;
+    public Integer age;
+    public String bloodGroup;
+    public Patient next; //this points to the next patient
+    public Patient prev; //this points to the previous patient
+
+    public Patient(Integer id,String name,Integer age,String bloodGroup,Patient next,Patient prev){
+        // To Do 
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.bloodGroup = bloodGroup;
+        this.next = next;
+        this.prev = prev;
+    }
+
+}
+
+
+public void registerPatient(int id, String name, int age, String bloodgroup) {
+        // To Do 
+        Patient last = dh;
+        while(last.next!=dh){
+            last =last.next;
+        } 
+        Patient P = new Patient(id, name, age, bloodgroup, dh.prev, dh.next);
+        last.next = P;
+        P.prev = last;
+        P.next = dh;
+        dh.prev = P;
+        System.out.println("Success registering patient");
+    }
+
+    public void servePatient() {
+        // To do
+        Patient P = dh.next;
+        Patient temp = P.next;
+        temp.prev = dh;
+        dh.next = temp;
+        System.out.println(P.name+"is Served");
+        
+    }
+
+    public void showAllPatient() {
+        //To Do
+        Patient p = dh.next;
+        while(p!=dh){
+            if (p.next!=dh){
+                System.out.print(p.name+" ");
+            }
+            
+            else{
+                System.out.println(p.name);
+            }
+            p = p.next;
+        }
+    }
+
+    public boolean canDoctorGoHome() {
+        // To Do
+        if(dh.next!=null){
+            return false;
+        }
+        return true; // Delete this line once you're ready
+    }
+
+    public void cancelAll() {
+        // To Do
+        dh.next = dh;
+        dh.prev = dh;
+        System.out.println("All apppointments cancelled");
+    }
+
+
+    public void reverseTheLine() {
+        // To Do
+        Patient p = dh;
+        Patient p1 = dh.next;
+        Patient p2 = p1.next;
+
+        while(p2!=dh){
+            p1.next = p;
+            p1.prev = p2; 
+            p = p1;
+            p1 = p2;
+            p2 = p2.next;
+        }
+        p1.next = p;
+        p1.prev = p2;
+        dh.prev = dh.next;
+        dh.next = p1;
+
+        
+        Patient P = dh.next;
+        while(P!=dh){
+            if (P.next!=dh){
+                System.out.print(P.name+" ");
+            }
+            
+            else{
+                System.out.println(P.name);
+            }
+            P = P.next;
+        }
+    }
+
+
+
+
+    public static void main(String[] args) {
+        System.out.println("** Welcome to Waiting Room Management System **");
+        // To Do
+        // Create WRM Object and call the necessary methods
+        WRM p = new WRM();
+        while(true){
+            System.out.println("\n==Choose an Option==");
+            System.out.println("1. RegisterPatient()\n"+
+            "2. ServePatient()\n"+
+            "3. ShowAllPatient()\n"+
+            "4. CanDoctorGoHome()\n"+
+            "5. CancelAll()\\n"+
+            "6. ReverseTheLine()\n"+
+            "7. Exit");
+            System.out.println("=====================");
+            System.out.print("Enter your choice: ");
+            Scanner sc = new Scanner(System.in);
+            System.out.println();
+            int n = sc.nextInt();
+            if(n==1){
+                System.out.println("Executing RegisterPatient()...");
+                System.out.println("Enter ID: ");
+                int I = sc.nextInt();
+                System.out.println("Enter Name: ");
+                String N = sc.next();
+                System.out.println("Enter Age: ");
+                int A = sc.nextInt();
+                System.out.println("Enter Blood group: ");
+                String B = sc.next();
+                p.registerPatient(I, N, A, B);
+            }
+            else if(n==2){
+                System.out.println("Executing ServePatient()...");
+                p.servePatient();
+            }
+            else if(n==3){
+                System.out.println("Executing ShowAllPatient()...");
+                 p.showAllPatient();
+            }
+            else if(n==4){
+                System.out.println("Executing CanDoctorGoHome()...");
+                boolean flag = p.canDoctorGoHome();
+                if(flag){
+                    System.out.println("Yes");
+                }
+                else{
+                    System.out.println("No");
+                }
+            }
+            else if(n==5){
+                System.out.println("Executing CancelAll()...");
+                p.cancelAll();
+            }
+            else if(n==6){
+                System.out.println("Executing ReverseTheLine()...");
+                p.reverseTheLine();
+            }
+            else if(n==7){
+                System.out.println("Thank you for using waiting room management system.");
+                break;
+            }
+            else{
+                System.out.println("No such option.");
+            }
+        }        
+    }
+
+
