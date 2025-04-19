@@ -1,0 +1,114 @@
+Task#1
+public static BTNode convertMirror( BTNode root ){
+    // TO DO
+    if(root == null){
+        return root;
+    }
+    else{
+        BTNode temp = root.left;
+        root.left = root.right;
+        root.right = temp;
+        convertMirror(root.left);
+        convertMirror(root.right);
+        return root;
+
+    }
+}
+
+
+
+
+Task#2
+public static void smallestLevel( BTNode root, Integer[] levelArray, int lvl ){
+    // TO DO
+    if(root == null){
+        return;
+    }
+    else{
+        if(levelArray[lvl]==null){
+            levelArray[lvl]=(int)root.elem;
+        }
+        else if(levelArray[lvl]>(int)root.elem){
+            levelArray[lvl]=(int)root.elem;
+        }
+        smallestLevel(root.left, levelArray, lvl+1);
+        smallestLevel(root.right, levelArray, lvl+1);
+    }
+}
+
+
+
+
+Task#3
+public static Integer sumTree( BTNode root ){
+    //TO DO
+    return (int)root.elem+sum(root.left, 1)+sum(root.right, 1);
+}
+
+private static Integer sum(BTNode root, int lvl){
+    if(root == null){
+        return 0;
+    }
+    else{
+        return sum(root.left, lvl+1)+sum(root.right, lvl+1)+(int)root.elem%lvl;
+    }
+}
+
+
+
+
+Task#4
+public static void swapChild( BTNode root, int lvl, int M ){
+    //TO DO
+    if(root == null){
+        return;
+    }
+    if(lvl<M){
+        BTNode temp = root.left;
+        root.left = root.right;
+        root.right = temp;
+    }
+    swapChild(root.left, lvl+1, M);
+    swapChild(root.right, lvl+1, M);
+}
+
+
+
+
+Task#5
+public static Integer subtractSummation( BTNode root ){
+    //TO DO
+    return sum(root.left)-sum(root.right);
+}
+
+private static Integer sum(BTNode root){
+    if(root == null){
+        return 0;
+    }
+    else{
+        return sum(root.left)+sum(root.right)+(int)root.elem;
+    }
+}
+
+
+
+
+Task#6
+public static Integer levelSum( BTNode root ){
+    //TO DO
+    return sum(root, 0);
+}
+
+private static Integer sum(BTNode root, int lvl){
+    if(root == null){
+        return 0;
+    }
+    else{
+        if(lvl%2==0){
+            return sum(root.left, lvl+1)+sum(root.right, lvl+1)-(int)root.elem;
+        }
+        else{
+            return sum(root.left, lvl+1)+sum(root.right, lvl+1)+(int)root.elem;
+        }
+    }
+}
