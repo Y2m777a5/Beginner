@@ -1,0 +1,99 @@
+Task#1
+public static Integer lowestCommonAncestor( BSTNode root, Integer x, Integer y ){
+    // TO DO
+    if(x>y){
+        x+=y;
+        x-=y=x-y;
+    }
+    if(root.left == null || root.right == null){
+        return root.elem;
+    }
+    else{
+        Integer ancst = lowestCommonAncestor(root.left, x, y);
+        if(root.elem <=y){
+            if(root.elem>=x && root.elem<=y){
+                if(ancst<root.elem){
+                    ancst = root.elem;
+                }
+            }
+            ancst = lowestCommonAncestor(root.right, x, y);
+            if(root.elem>=x && root.elem<=y){
+                if(ancst>root.elem){
+                    ancst = root.elem;
+                }
+            }
+            return ancst;
+        }
+        return ancst;
+    }
+}
+
+
+
+
+Task#2
+public static String findPath( BSTNode root, Integer key ){
+    // TO DO
+    if(root.left == null  || root.right == null){
+        if(root.elem != key){
+            return "No Path Found";
+        }
+        else{
+            return root.elem+"";
+        }
+    }
+    else{
+        if(key<root.elem){
+            String loc  = findPath(root.left, key);
+            if(loc.equals("No Path Found")){
+                return loc;
+            }
+            else{
+                return root.elem+" "+loc;
+            }
+        }
+        else{
+            String loc2 = findPath(root.right, key);
+            if(loc2.equals("No Path Found")){
+                return loc2 ;
+            }
+            else{
+                return root.elem+" "+loc2;
+            }
+        }
+    }
+}
+
+
+
+
+Task#3
+public static Integer sumOfLeaves( BSTNode root, Integer sum ){
+    // TO DO
+    if(root.left == null){
+        return sum+=root.elem;
+    }
+    else{
+        sum = sumOfLeaves(root.left, sum);
+        sum = sumOfLeaves(root.right, sum);
+        return sum;
+    }
+}
+
+
+
+
+Task#4
+public static Integer mirrorSum( BSTNode root ){
+    //TO DO
+    return helper(root.left, root.right); // remove this line
+}
+
+private static Integer helper(BSTNode rl, BSTNode rr){
+    if(rl == null || rr==null){
+        return 0;
+    }
+    else{
+        return helper(rl.left, rr.right)+rl.elem+rr.elem+helper(rl.right, rr.left);
+    }
+}
