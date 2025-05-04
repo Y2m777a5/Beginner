@@ -1,0 +1,413 @@
+
+Task#1
+public class MinHeap {
+    private Integer [] heap;
+    private int capacity;
+    private int size;
+    
+    public MinHeap(int capacity){
+        this.capacity = capacity+1;
+        this.heap = new Integer [this.capacity];
+        this.size = 1;
+    }
+
+    private void swap(int i, int j){
+        int temp = heap[i];
+        heap[i] = heap[j];
+        heap[j] = temp;
+    }
+
+    private void swim(int idx) {
+        while (idx > 1 && heap[idx] < heap[idx/2]) {
+            swap(idx, idx/2);
+            idx = idx/2;
+        }
+    }
+
+    public void insert(int val) {
+        if (size == capacity) {
+            return;
+        }
+        heap[size] = val;
+        swim(size);
+        size++;
+    }
+
+    public void sink(int idx){
+        int min = idx;
+        int left = 2*idx;
+        int right = 2*idx + 1;
+
+        if(left < size && heap[min] >= heap[left]){
+            min = left;
+        }
+        if(right < size && heap[min] >= heap[right]){
+            min = right;
+        }
+        if(min != idx){
+            swap(idx , min);
+            sink(min);
+        }
+    }
+
+    public int extractMin(){
+        if(size == 1){
+            throw new IllegalStateException("Heap is empty");
+        }
+        int min = heap[1];
+        heap[1] = heap[size-1];
+        size--;
+        sink(1);
+        return min;
+    }
+
+    public void sort(){
+        int oSize = size;
+        for (int i = size - 1; i > 1; i--) {
+            swap(1, i);
+            size--;
+            sink(1);
+        }
+        size = oSize;
+    }
+
+    public void printHeap(){
+        for(int i=1; i< size; i++){
+            if(i==1){
+                System.out.print("["+heap[i]);
+            }
+            else{
+                System.out.print(", "+heap[i]);
+            }
+        }
+        System.out.println("]");
+    }
+
+    public void printSorted(){
+        sort();
+        for(int i=1; i< size; i++){
+            if(i==1){
+                System.out.print("["+heap[i]);
+            }
+            else{
+                System.out.print(", "+heap[i]);
+            }
+        }
+        System.out.println("]");
+    }
+}
+
+
+
+
+
+Task#2
+public class MaxHeap {
+    private int [] heap;
+    private int capacity;
+    private int size;
+
+    public MaxHeap(int capacity){
+        this.capacity = capacity+1;
+        this.heap = new int [this.capacity];
+        this.size = 1;
+    }
+    
+    private void swap(int i, int j){
+        int temp = heap[i];
+        heap[i] = heap[j];
+        heap[j] = temp;
+    }
+
+    private void swim(int idx) {
+        while (idx > 1 && heap[idx] > heap[idx/2]) {
+            swap(idx, idx/2);
+            idx = idx/2;
+        }
+    }
+
+    public void insert(int val) {
+        if (size == capacity) {
+            return;
+        }
+        heap[size] = val;
+        swim(size);
+        size++;
+    }
+
+    private void sink(int idx){
+        int max = idx;
+        int left = 2*idx;
+        int right = 2*idx + 1;
+
+        if(left < size && heap[left] >= heap[max]){
+            max = left;
+        }
+        if(right < size && heap[right] >= heap[max]){
+            max = right;
+        }
+        if(max != idx){
+            swap(idx , max);
+            sink(max);
+        }
+    }
+
+    public int extractMax(){
+        if(size == 1){
+            throw new IllegalStateException("Heap is empty");
+        }
+        int max = heap[1];
+        heap[1] = heap[size-1];
+        size--;
+        sink(1);
+        return max;
+    }
+
+    public void sort(){
+        int oSize = size;
+        for (int i = size - 1; i > 1; i--) {
+            swap(1, i);
+            size--;
+            sink(1);
+        }
+        size = oSize;
+    }
+
+    public void printHeap(){
+        for(int i=1; i < size; i++){
+            if(i==1){
+                System.out.print("["+heap[i]);
+            }
+            else{
+                System.out.print(", "+heap[i]);
+            }
+        }
+        System.out.println("]");
+    }
+
+    public void printSorted(){
+        sort();
+        for(int i=1; i < size; i++){
+            if(i==1){
+                System.out.print("["+heap[i]);
+            }
+            else{
+                System.out.print(", "+heap[i]);
+            }
+        }
+        System.out.println("]");
+    }
+}
+
+
+
+
+
+Task#3
+public class Task3 {
+    private MinHeap minheap;
+    
+    public Task3(int[] tasks, int m){
+        minheap = new MinHeap(m);
+        for(int i=0; i<m; i++){
+            minheap.insert(0);
+        }
+        for(int i=0; i<tasks.length; i++){
+            int min = minheap.extractMin();
+            minheap.insert(min+tasks[i]);
+        }
+    }
+
+    public void printTask3(){
+        minheap.printHeap();
+    }
+}
+
+
+
+
+
+Task#4
+public class Task4 {
+    private MaxHeap maxheap;
+    private int[] arr;
+    private int m;
+    
+    public Task4(int[] nums, int k){
+        maxheap = new MaxHeap(nums.length);
+        arr = new int[k];
+        for(int i=0; i<nums.length; i++){
+            maxheap.insert(nums[i]);
+        }
+        for(int i=0; i<k; i++){
+            arr[i]=maxheap.extractMax();
+        }
+        m=k;
+    }
+
+    public void printTask4(){
+        for(int i=0; i < m; i++){
+            if(i==0){
+                System.out.print("["+arr[i]);
+            }
+            else{
+                System.out.print(", "+arr[i]);
+            }
+        }
+        System.out.println("]");
+    }
+}
+
+
+
+
+
+Driver_Code
+import java.util.Scanner;
+public class HeapTester {
+    public static void main (String[] args){
+        Scanner sc  = new Scanner(System.in);
+        System.out.print("Enter Task Number (1-4)/ Press enter to run all: ");
+        String input = sc.nextLine();
+
+        if(input.equals("1") || input.equals("")){
+            System.out.println("\n---------------Task#1---------------\n");
+            task_1();
+        }
+
+        if(input.equals("2") || input.equals("")){
+            System.out.println("\n---------------Task#2---------------\n");
+            task_2();
+        }
+
+        if(input.equals("3") || input.equals("")){
+            System.out.println("\n---------------Task#3---------------\n");
+            System.out.print("Press enter to continue with the sample array/ Enter 'y' to make your own: ");
+            String makeArr1 = sc.nextLine().toLowerCase();
+            int[] arr;
+            if(makeArr1.equals("")){
+                arr = new int[] {2,4,7,1,6};
+            }
+            else{
+                System.out.print("Enter total number of tasks: ");
+                int n = sc.nextInt();
+                arr = new int[n];
+                System.out.println("Enter the processing times: ");
+                for(int i=0; i<n; i++){
+                    System.out.print((i+1)+": ");
+                    arr[i] = sc.nextInt();
+                }
+            }
+            System.out.println("\nArray:");
+            for(int i=0; i<arr.length; i++){
+                if(i==0){
+                    System.out.print("["+arr[i]);
+                }
+                else{
+                    System.out.print(", "+arr[i]);
+                }
+            }
+            System.out.println("]");
+            System.out.print("\nEnter the number of machines: ");
+            int m = sc.nextInt();
+            task_3(arr, m);
+            sc.nextLine();
+        }
+        
+        if(input.equals("4") || input.equals("")){
+            System.out.println("\n---------------Task#4---------------\n");
+            System.out.print("Press enter to continue with the sample array/ Enter 'y' to make your own: ");
+            String makeArr2 = sc.nextLine().toLowerCase();
+            int[] nums;
+            if(makeArr2.equals("")){
+                nums = new int[] {4,10,2,8,6,7};
+            }
+            else{
+                System.out.print("Enter the length of array: ");
+                int elemNum = sc.nextInt();
+                nums = new int[elemNum];
+                System.out.println("Enter the elements: ");
+                for(int i=0; i<elemNum; i++){
+                    System.out.print((i+1)+": ");
+                    nums[i] = sc.nextInt();
+                }
+            }
+            System.out.println("\nArray:");
+            for(int i=0; i<nums.length; i++){
+                if(i==0){
+                    System.out.print("["+nums[i]);
+                }
+                else{
+                    System.out.print(", "+nums[i]);
+                }
+            }
+            System.out.println("]");
+            System.out.print("\nEnter the number of largest elements to find: ");
+            int k = sc.nextInt();
+            task_4(nums, k);
+        }
+        System.out.println("\n---------------[THE END]---------------");
+        sc.close();
+    }
+
+    public static void task_1(){
+        MinHeap minHeap = new MinHeap(10);
+        minHeap.insert(11);
+        minHeap.insert(21);
+        minHeap.insert(6);
+        minHeap.insert(9);
+        minHeap.insert(28);
+        minHeap.insert(16);
+
+        System.out.println("Heap:");
+        minHeap.printHeap();
+
+        System.out.println("\nExtracted min_Heap: \n"+minHeap.extractMin());
+
+        System.out.println("\nAfter extracting min_Heap:");
+        minHeap.printHeap();
+
+        System.out.println("\nHeap Sort:");
+        minHeap.printSorted();
+
+        System.out.println();
+    }
+
+    public static void task_2(){
+        MaxHeap maxHeap = new MaxHeap(10);
+        maxHeap.insert(12);
+        maxHeap.insert(22);
+        maxHeap.insert(8);
+        maxHeap.insert(9);
+        maxHeap.insert(30);
+        maxHeap.insert(15);
+
+        System.out.println("Heap:");
+        maxHeap.printHeap();
+ 
+        System.out.println("\nExtracted min_Heap:\n"+maxHeap.extractMax());
+
+        System.out.println("\nAfter extracting min_Heap:");
+        maxHeap.printHeap();
+
+        System.out.println("\nHeap Sort:");
+        maxHeap.printSorted();
+
+        System.out.println();
+    }
+
+    public static void task_3(int[] tasks, int m){
+        Task3 t3 = new Task3(tasks, m);
+
+        System.out.println("\nOutput:");
+        t3.printTask3();
+    }
+
+    public static void task_4(int[] nums, int k){
+        Task4 t4 = new Task4(nums,k);
+
+        System.out.println("\nOutput:");
+        t4.printTask4();
+    }
+}
+
