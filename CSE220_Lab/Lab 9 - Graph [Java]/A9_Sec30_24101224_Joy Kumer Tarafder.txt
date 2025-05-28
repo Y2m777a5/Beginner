@@ -1,0 +1,480 @@
+//Adjacency Matrix.........................
+
+public class AdjacencyMatrix {
+    public int[][] matrix;
+    public boolean check;
+
+    public AdjacencyMatrix(int size, boolean check){
+        this.check = check;
+        this.matrix = new int [size][size];
+    }
+
+    public void addEdge(int source, int destination, int weight){
+        this.matrix[source][destination]=weight;
+        if(!check){
+            this.matrix[destination][source]= weight;
+        }
+    }
+
+    public void delEdge(int source, int destination){
+        this.matrix[source][destination]=0;
+        if(!check){
+            this.matrix[destination][source]=0;
+        }
+    }
+
+    public boolean hasEdge(int source, int destination){
+        return this.matrix[source][destination] != 0;
+    }
+
+    public boolean checkDirect(int[][] matrix){
+        for(int i=1; i<matrix.length; i++){
+            for(int j=1; j<matrix[i].length; j++){
+                if(matrix[i][j]==matrix[j][i]){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void findMaxVer(int[][] matrix){
+        int max = 0;
+        int ver = 0;
+        for(int i=1; i<matrix.length; i++){
+            int sum = 0;
+            for(int j=1; j<matrix[i].length-1; j++){
+                if(matrix[i][j]!=0){
+                    sum++;
+                }
+            }
+            if(i==0 || max<sum){
+                ver = i;
+                max=sum;
+            }
+        }
+        System.out.println("Vertex: "+ver+"\nDegree: "+max);
+    }
+
+    public void findMaxWeight(int[][] matrix){
+        int max = 0;
+        int ver = 0;
+        for(int i=1; i<matrix.length; i++){
+            int sum = 0;
+            for(int j=1; j<matrix[i].length-1; j++){
+                if(matrix[i][j]!=0){
+                    sum+=matrix[i][j];
+                }
+            }
+            if(i==0 || max<sum){
+                ver = i;
+                max=sum;
+            }
+        }
+        System.out.println("Vertex: "+ver+"\nSum of weight: "+max);
+    }
+
+    public void convert(int[][] matrix){
+        for(int i=1; i<matrix.length; i++){
+            for(int j=1; j<matrix[i].length; j++){
+                if(matrix[i][j]!=0){
+                    matrix[j][i] = matrix[i][j];
+                }
+            }
+        }
+        System.out.println("Converted: ");
+        printMatrix(matrix);
+    }
+
+    public void printMatrix(int[][] matrix){
+        for(int i=1; i<matrix.length; i++){
+            for(int j=1; j<matrix[i].length-1; j++){
+                System.out.print(matrix[i][j]+", ");
+            }
+            System.out.println(matrix[i][matrix[i].length-1]);
+        }
+    }
+}
+
+
+
+
+//Driver_Code.........................
+
+public class AdjacencyMatrixTester {
+    public static void main(String[] agrs){
+        int[][] adj_matrix = {
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 1, 1, 1, 1, 0, 1, 1, 0},
+            {0, 1, 0, 1, 0, 0, 0, 1, 0, 1},
+            {0, 1, 1, 0, 1, 1, 1, 0, 0, 0},
+            {0, 1, 0, 1, 0, 0, 1, 0, 0, 1},
+            {0, 1, 0, 1, 0, 0, 1, 1, 1, 0},
+            {0, 0, 0, 1, 1, 1, 0, 0, 0, 0},
+            {0, 1, 1, 0, 0, 1, 0, 0, 1, 0},
+            {0, 1, 0, 0, 0, 1, 0, 1, 0, 0},
+            {0, 0, 1, 0, 1, 0, 0, 0, 0, 0}
+        };
+
+        //print given Adjacency Matrix;
+        System.out.println("Given matrix");
+        for(int i=1; i<adj_matrix.length; i++){
+            for(int j=1; j<adj_matrix[i].length-1; j++){
+                System.out.print(adj_matrix[i][j]+", ");
+            }
+            System.out.println(adj_matrix[i][adj_matrix[i].length-1]);
+        }
+
+        System.out.println("\n------------------------------\n");
+        
+        //Craeting graphUndirect (http://graphonline.top/?graph=vOKKmovfGoGqJmwNZZcst);
+        AdjacencyMatrix graphUndirect = new AdjacencyMatrix(10, false);
+
+        graphUndirect.addEdge(1, 2, 1);
+        graphUndirect.addEdge(1, 3, 1);
+        graphUndirect.addEdge(1, 4, 1);
+        graphUndirect.addEdge(1, 5, 1);
+        graphUndirect.addEdge(1, 7, 1);
+        graphUndirect.addEdge(1, 8, 1);
+        graphUndirect.addEdge(2, 3, 1);
+        graphUndirect.addEdge(2, 7, 1);
+        graphUndirect.addEdge(2, 9, 1);
+        graphUndirect.addEdge(3, 4, 1);
+        graphUndirect.addEdge(3, 5, 1);
+        graphUndirect.addEdge(3, 6, 1);
+        graphUndirect.addEdge(4, 6, 1);
+        graphUndirect.addEdge(4, 9, 1);
+        graphUndirect.addEdge(5, 6, 1);
+        graphUndirect.addEdge(5, 7, 1);
+        graphUndirect.addEdge(5, 8, 1);
+        graphUndirect.addEdge(7, 8, 1);
+
+        System.out.println("Undirected: ");
+        graphUndirect.printMatrix(graphUndirect.matrix);
+
+        System.out.println("\n---------------Task#1---------------\n");
+        graphUndirect.findMaxVer(graphUndirect.matrix);
+
+        System.out.println("\n---------------Task#2---------------\n");
+        graphUndirect.findMaxWeight(graphUndirect.matrix);
+
+
+
+        //Creating GraphDirect (http://graphonline.top/?graph=vOKKmovfGoGqJmwNZZcst);
+        AdjacencyMatrix graphDirect = new AdjacencyMatrix(10, true);
+
+        graphDirect.addEdge(1, 2, 2);
+        graphDirect.addEdge(1, 3, 7);
+        graphDirect.addEdge(1, 4, 1);
+        graphDirect.addEdge(1, 5, 4);
+        graphDirect.addEdge(1, 7, 3);
+        graphDirect.addEdge(1, 8, 2);
+        graphDirect.addEdge(2, 3, 1);
+        graphDirect.addEdge(2, 7, 5);
+        graphDirect.addEdge(2, 9, 1);
+        graphDirect.addEdge(3, 4, 9);
+        graphDirect.addEdge(3, 5, 8);
+        graphDirect.addEdge(3, 6, 8);
+        graphDirect.addEdge(4, 6, 9);
+        graphDirect.addEdge(4, 9, 1);
+        graphDirect.addEdge(5, 6, 3);
+        graphDirect.addEdge(5, 7, 4);
+        graphDirect.addEdge(5, 8, 6);
+        graphDirect.addEdge(7, 8, 7);
+
+        System.out.println("Directed: ");
+        graphDirect.printMatrix(graphDirect.matrix);
+
+        System.out.println("\n---------------Task#3---------------\n");
+        graphDirect.findMaxVer(graphDirect.matrix);
+        graphDirect.findMaxWeight(graphDirect.matrix);
+
+        System.out.println("\n---------------Task#4---------------\n");
+        System.out.println("Undirected: ");
+        graphDirect.convert(graphDirect.matrix);
+    }
+}
+
+
+
+
+//Edge_Class.........................
+
+public class Edge{
+    public int fromV;
+    public int toV;
+    public int weight;
+    public Edge next;
+    public Edge(int fromV, int toV, int weight){
+        this.fromV = fromV;
+        this.toV = toV;
+        this.weight = weight;
+        this.next = null;
+    }
+}
+
+
+
+
+//Adjacency List.........................
+
+public class AdjacencyList {
+    public Edge[] adjacencyList;
+    public boolean check;
+
+    public AdjacencyList(int vertices, boolean check){
+        this.check=check;
+        adjacencyList = new Edge[vertices];
+    }
+
+    //Inspired By AIB sir;
+    //Not part of the assignmnet (Adjacency matrix > Adjacency List);
+    public AdjacencyList(int[][] matrix){
+        for(int i=0; i<matrix.length; i++){
+            for(int j=0; j<matrix[i].length; j++){
+                if(matrix[i][j]!=0){
+                    addEdge(i, j, matrix[i][j]);
+                }
+            }
+        }
+    }
+
+    public void addEdge(int src, int des, int wght){
+        if(!check){
+            if(hasEdge(src, des)){
+            Edge n = adjacencyList[src];
+            while(n!=null){
+                if(n.fromV==des){
+                    n.weight = wght;
+                    return; //Work done here so break the method;
+                }
+                n = n.next;
+                }
+            }
+            else{
+                Edge newEdge = new Edge(src, des, wght);
+                if(adjacencyList[src]==null){
+                    adjacencyList[src]=newEdge;
+                }
+                else{
+                    appendLL(adjacencyList[src], newEdge);
+                }
+            }
+
+            //Vice-versa
+            if(hasEdge(des, src)){
+            Edge n = adjacencyList[src];
+            while(n!=null){
+                if(n.fromV==src){
+                    n.weight = wght;
+                    return; //Work done here so break the method;
+                }
+                n = n.next;
+                }
+            }
+            else{
+                Edge newEdge = new Edge(des, src, wght);
+                if(adjacencyList[des]==null){
+                    adjacencyList[des]=newEdge;
+                }
+                else{
+                    appendLL(adjacencyList[des], newEdge);
+                }
+            }
+        }
+        else{
+            if(hasEdge(src, des)){
+            Edge n = adjacencyList[src];
+            while(n!=null){
+                if(n.fromV==des){
+                    n.weight = wght;
+                    return; //Work done here so break the method;
+                }
+                n = n.next;
+                }
+            }
+            else{
+                Edge newEdge = new Edge(src, des, wght);
+                if(adjacencyList[src]==null){
+                    adjacencyList[src]=newEdge;
+                }
+                else{
+                    appendLL(adjacencyList[src], newEdge);
+                }
+            }
+        }
+    }
+
+    public boolean hasEdge(int src, int des){
+        Edge n = adjacencyList[src];
+        while(n!=null){
+            if(n.toV==des){
+                return true;
+            }
+            n = n.next;
+        }
+        return false;
+    }
+
+    public void appendLL(Edge head, Edge n){
+        Edge h = head;
+        while(h.next!=null){
+            h = h.next;
+        }
+        h.next=n;
+    }
+    
+    public int getLength(Edge h){
+        Edge head = h;
+        int count=0;
+        while(head!=null){
+            count++;
+            head = head.next;
+        }
+        return count;
+    }
+
+    public void findMaxVer(Edge[] adjacencyList){
+        int max = 0;
+        int ver = 0;
+        for(int i=0; i<adjacencyList.length; i++){
+            int tempSum=0;
+            Edge head = adjacencyList[i];
+            while(head!=null){
+                tempSum++;
+                head = head.next;
+            }
+            if(i==0 || max<tempSum){
+                ver = i;
+                max=tempSum;
+            }
+        }
+        System.out.println("Vertex: "+ver+"\nDegree: "+max);
+    }
+
+    public void findMaxWeight(Edge[] adjacencyList){
+        int max = 0;
+        int ver = 0;
+        for(int i=0; i<adjacencyList.length; i++){
+            int tempSum=0;
+            Edge head = adjacencyList[i];
+            while(head!=null){
+                tempSum+=head.weight;
+                head = head.next;
+            }
+            if(i==0 || max<tempSum){
+                ver = i;
+                max=tempSum;
+            }
+        }
+        System.out.println("Vertex: "+ver+"\nSum of weight: "+max);
+    }
+
+    public void convert(Edge[] adjacencyList){
+        for(int i=0; i<adjacencyList.length; i++){
+            Edge head = adjacencyList[i];
+            while(head!=null){
+                addEdge(head.toV,i,head.weight);
+                head = head.next;
+            }
+        }
+        printAdjacencyList(adjacencyList);
+    }
+
+    public void printAdjacencyList(Edge[] adjacencyList){
+        for(int i=0; i<adjacencyList.length; i++){
+            System.out.print(i+": ");
+            printLL(adjacencyList[i]);
+            System.out.println();
+        }
+    }
+
+    private void printLL(Edge head){
+        Edge h = head;
+        while(h!=null){
+            System.out.print("<"+h.fromV+"-"+h.toV+": "+h.weight+"> ");
+            h=h.next;
+        }
+    }
+}
+
+
+
+
+//Driver_Code.........................
+
+
+public class AdjacencyListTester {
+
+    public static void main(String[] agrs){
+        System.out.println("\n------------------------------\n");
+        
+        //Craeting graphUndirect (http://graphonline.top/?graph=vOKKmovfGoGqJmwNZZcst);
+        AdjacencyList graphUndirect = new AdjacencyList(10, false);
+
+        graphUndirect.addEdge(1, 2, 1);
+        graphUndirect.addEdge(1, 3, 1);
+        graphUndirect.addEdge(1, 4, 1);
+        graphUndirect.addEdge(1, 5, 1);
+        graphUndirect.addEdge(1, 7, 1);
+        graphUndirect.addEdge(1, 8, 1);
+        graphUndirect.addEdge(2, 3, 1);
+        graphUndirect.addEdge(2, 7, 1);
+        graphUndirect.addEdge(2, 9, 1);
+        graphUndirect.addEdge(3, 4, 1);
+        graphUndirect.addEdge(3, 5, 1);
+        graphUndirect.addEdge(3, 6, 1);
+        graphUndirect.addEdge(4, 6, 1);
+        graphUndirect.addEdge(4, 9, 1);
+        graphUndirect.addEdge(5, 6, 1);
+        graphUndirect.addEdge(5, 7, 1);
+        graphUndirect.addEdge(5, 8, 1);
+        graphUndirect.addEdge(7, 8, 1);
+
+        System.out.println("Undirected: ");
+        graphUndirect.printAdjacencyList(graphUndirect.adjacencyList);
+
+        System.out.println("\n---------------Task#1---------------\n");
+        graphUndirect.findMaxVer(graphUndirect.adjacencyList);
+
+        System.out.println("\n---------------Task#2---------------\n");
+        graphUndirect.findMaxWeight(graphUndirect.adjacencyList);
+
+
+
+        //Creating GraphDirect (http://graphonline.top/?graph=vOKKmovfGoGqJmwNZZcst);
+        AdjacencyList graphDirect = new AdjacencyList(10, true);
+
+        graphDirect.addEdge(1, 2, 2);
+        graphDirect.addEdge(1, 3, 7);
+        graphDirect.addEdge(1, 4, 1);
+        graphDirect.addEdge(1, 5, 4);
+        graphDirect.addEdge(1, 7, 3);
+        graphDirect.addEdge(1, 8, 2);
+        graphDirect.addEdge(2, 3, 1);
+        graphDirect.addEdge(2, 7, 5);
+        graphDirect.addEdge(2, 9, 1);
+        graphDirect.addEdge(3, 4, 9);
+        graphDirect.addEdge(3, 5, 8);
+        graphDirect.addEdge(3, 6, 8);
+        graphDirect.addEdge(4, 6, 9);
+        graphDirect.addEdge(4, 9, 1);
+        graphDirect.addEdge(5, 6, 3);
+        graphDirect.addEdge(5, 7, 4);
+        graphDirect.addEdge(5, 8, 6);
+        graphDirect.addEdge(7, 8, 7);
+
+        System.out.println("Directed: ");
+        graphDirect.printAdjacencyList(graphDirect.adjacencyList);
+
+        System.out.println("\n---------------Task#3(1)---------------\n");
+        graphDirect.findMaxVer(graphDirect.adjacencyList);
+
+        System.out.println("\n---------------Task#3(2)---------------\n");
+        graphDirect.findMaxWeight(graphDirect.adjacencyList);
+
+        System.out.println("\n---------------Task#4---------------\n");
+        System.out.println("Undirected: ");
+        graphDirect.convert(graphDirect.adjacencyList);
+    }
+}
