@@ -38,24 +38,7 @@ public class AdjacencyList {
                 }
                 else{
                     //Append Linked List
-                    Edge h = adjacencyList[src];
-                    if(newEdge.toV<adjacencyList[src].toV){
-                        newEdge.next=adjacencyList[src];
-                        adjacencyList[src]=newEdge;
-                    }
-                    else{
-                        int idx=newEdge.toV;
-                        while( h.next!=null && idx>h.next.toV){
-                            h = h.next;
-                        }
-                        if(h.next==null){
-                            h.next = newEdge;
-                        }
-                        else{
-                            newEdge.next = h.next;
-                            h.next = newEdge;
-                        }
-                    }
+                    appendLL(adjacencyList[src], newEdge);
                 }
             }
 
@@ -77,24 +60,7 @@ public class AdjacencyList {
                 }
                 else{
                     //Append Linked List
-                    Edge h = adjacencyList[src];
-                    if(newEdge.toV<adjacencyList[src].toV){
-                        newEdge.next=adjacencyList[src];
-                        adjacencyList[src]=newEdge;
-                    }
-                    else{
-                        int idx=newEdge.toV;
-                        while( h.next!=null && idx>h.next.toV){
-                            h = h.next;
-                        }
-                        if(h.next==null){
-                            h.next = newEdge;
-                        }
-                        else{
-                            newEdge.next = h.next;
-                            h.next = newEdge;
-                        }
-                    }
+                    appendLL(adjacencyList[des], newEdge);
                 }
             }
         }
@@ -116,25 +82,29 @@ public class AdjacencyList {
                 }
                 else{
                     //Append Linked List
-                    Edge h = adjacencyList[src];
-                    if(newEdge.toV<adjacencyList[src].toV){
-                        newEdge.next=adjacencyList[src];
-                        adjacencyList[src]=newEdge;
-                    }
-                    else{
-                        int idx=newEdge.toV;
-                        while( h.next!=null && idx>h.next.toV){
-                            h = h.next;
-                        }
-                        if(h.next==null){
-                            h.next = newEdge;
-                        }
-                        else{
-                            newEdge.next = h.next;
-                            h.next = newEdge;
-                        }
-                    }
+                    appendLL(adjacencyList[src], newEdge);
                 }
+            }
+        }
+    }
+
+    public void appendLL(Edge head, Edge nNode){
+        Edge h = adjacencyList[head.fromV];
+        if(nNode.toV<adjacencyList[head.fromV].toV){
+            nNode.next = adjacencyList[head.fromV];
+            adjacencyList[head.fromV] = nNode;
+        }
+        else{
+            int idx=nNode.toV;
+            while(h.next!=null && idx>h.next.toV){
+                h = h.next;
+            }
+            if(h.next==null){
+                h.next = nNode;
+            }
+            else{
+                nNode.next = h.next;
+                h.next = nNode;
             }
         }
     }
