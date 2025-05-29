@@ -8,7 +8,7 @@ public class AdjacencyList {
     }
 
     //Inspired By AIB sir;
-    //Not part of the assignmnet (Adjacency matrix > Adjacency List);
+    //Not a part of the assignmnet (Adjacency matrix -> Adjacency List);
     public AdjacencyList(int[][] matrix){
         for(int i=0; i<matrix.length; i++){
             for(int j=0; j<matrix[i].length; j++){
@@ -37,7 +37,25 @@ public class AdjacencyList {
                     adjacencyList[src]=newEdge;
                 }
                 else{
-                    appendLL(adjacencyList[src], newEdge);
+                    //Append Linked List
+                    Edge h = adjacencyList[src];
+                    if(newEdge.toV<adjacencyList[src].toV){
+                        newEdge.next=adjacencyList[src];
+                        adjacencyList[src]=newEdge;
+                    }
+                    else{
+                        int idx=newEdge.toV;
+                        while( h.next!=null && idx>h.next.toV){
+                            h = h.next;
+                        }
+                        if(h.next==null){
+                            h.next = newEdge;
+                        }
+                        else{
+                            newEdge.next = h.next;
+                            h.next = newEdge;
+                        }
+                    }
                 }
             }
 
@@ -58,7 +76,25 @@ public class AdjacencyList {
                     adjacencyList[des]=newEdge;
                 }
                 else{
-                    appendLL(adjacencyList[des], newEdge);
+                    //Append Linked List
+                    Edge h = adjacencyList[src];
+                    if(newEdge.toV<adjacencyList[src].toV){
+                        newEdge.next=adjacencyList[src];
+                        adjacencyList[src]=newEdge;
+                    }
+                    else{
+                        int idx=newEdge.toV;
+                        while( h.next!=null && idx>h.next.toV){
+                            h = h.next;
+                        }
+                        if(h.next==null){
+                            h.next = newEdge;
+                        }
+                        else{
+                            newEdge.next = h.next;
+                            h.next = newEdge;
+                        }
+                    }
                 }
             }
         }
@@ -79,12 +115,30 @@ public class AdjacencyList {
                     adjacencyList[src]=newEdge;
                 }
                 else{
-                    appendLL(adjacencyList[src], newEdge);
+                    //Append Linked List
+                    Edge h = adjacencyList[src];
+                    if(newEdge.toV<adjacencyList[src].toV){
+                        newEdge.next=adjacencyList[src];
+                        adjacencyList[src]=newEdge;
+                    }
+                    else{
+                        int idx=newEdge.toV;
+                        while( h.next!=null && idx>h.next.toV){
+                            h = h.next;
+                        }
+                        if(h.next==null){
+                            h.next = newEdge;
+                        }
+                        else{
+                            newEdge.next = h.next;
+                            h.next = newEdge;
+                        }
+                    }
                 }
             }
         }
     }
-
+    
     public boolean hasEdge(int src, int des){
         Edge n = adjacencyList[src];
         while(n!=null){
@@ -96,12 +150,15 @@ public class AdjacencyList {
         return false;
     }
 
-    public void appendLL(Edge head, Edge n){
+    public int getIndex(Edge head, int des){
         Edge h = head;
-        while(h.next!=null){
-            h = h.next;
+        int idx=0;
+        while(des<=h.toV && h.next!=null){
+            idx++;
+            h=h.next;
         }
-        h.next=n;
+        System.out.println("GetIndex "+h.toV);
+        return idx;
     }
     
     public int getLength(Edge h){
@@ -154,7 +211,7 @@ public class AdjacencyList {
         for(int i=0; i<adjacencyList.length; i++){
             Edge head = adjacencyList[i];
             while(head!=null){
-                addEdge(head.toV,i,head.weight);
+                addEdge(head.toV,head.fromV,head.weight);
                 head = head.next;
             }
         }
