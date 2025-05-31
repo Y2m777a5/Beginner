@@ -36,9 +36,8 @@ public class AdjacencyMatrix {
         return false;
     }
 
-    public void findMaxVer(int[][] matrix){
-        int max = 0;
-        int ver = 0;
+    public int[] findMaxVer(int[][] matrix){
+        int max[] = new int[2];
         for(int i=1; i<matrix.length; i++){
             int sum = 0;
             for(int j=1; j<matrix[i].length-1; j++){
@@ -46,17 +45,16 @@ public class AdjacencyMatrix {
                     sum++;
                 }
             }
-            if(i==0 || max<sum){
-                ver = i;
-                max=sum;
+            if(i==0 || max[1]<sum){
+                max[0]=i;
+                max[1]=sum;
             }
         }
-        System.out.println("Vertex: "+ver+"\nDegree: "+max);
+        return max;
     }
 
-    public void findMaxWeight(int[][] matrix){
-        int max = 0;
-        int ver = 0;
+    public int[] findMaxWeight(int[][] matrix){
+        int max[] = new int[2];
         for(int i=1; i<matrix.length; i++){
             int sum = 0;
             for(int j=1; j<matrix[i].length-1; j++){
@@ -64,12 +62,12 @@ public class AdjacencyMatrix {
                     sum+=matrix[i][j];
                 }
             }
-            if(i==0 || max<sum){
-                ver = i;
-                max=sum;
+            if(i==0 || max[1]<sum){
+                max[0]=i;
+                max[1]=sum;
             }
         }
-        System.out.println("Vertex: "+ver+"\nSum of weight: "+max);
+        return max;
     }
 
     public void convert(int[][] matrix){
@@ -80,7 +78,7 @@ public class AdjacencyMatrix {
                 }
             }
         }
-        System.out.println("Converted: ");
+        System.out.println("converted to undirected: ");
         printMatrix(matrix);
     }
 
