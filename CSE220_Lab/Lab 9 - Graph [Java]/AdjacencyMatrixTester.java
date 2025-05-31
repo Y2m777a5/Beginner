@@ -49,6 +49,8 @@ public class AdjacencyMatrixTester {
         System.out.println("Undirected: ");
         graphUndirect.printMatrix(graphUndirect.matrix);
 
+
+
         String t1="task#1";
         printTask(t1);
         int []maxVer = graphUndirect.findMaxVer(graphUndirect.matrix);
@@ -121,10 +123,13 @@ public class AdjacencyMatrixTester {
         printTask(t4);
         graphDirect.convert(graphDirect.matrix);
 
-        System.out.println("\n\n                       "+"\u001B[37m"+"---[ THE END ]---"+"\u001B[0m"+"                     \n");
+        System.out.println("\n\n                      "+"\u001B[37m"+"---[ THE END ]---"+"\u001B[0m"+"                    \n");
     }
 
-    //To change the color of the output; [Inspired by AIB sir]
+
+    //To change the color of the output;
+    //[Inspired by AIB sir];
+    
     static final String green ="\u001B[32m", red ="\u001B[31m",white ="\u001B[37m", magenta ="\033[0;95m";
     static final String bold ="\u001B[1m", underline ="\u001B[4m", regular ="\033[0;0m";
 

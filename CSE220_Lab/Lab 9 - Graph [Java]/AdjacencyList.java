@@ -91,18 +91,24 @@ public class AdjacencyList {
     public void appendLL(Edge head, Edge nNode){
         Edge h = adjacencyList[head.fromV];
         if(nNode.toV<adjacencyList[head.fromV].toV){
+            //destination node position is less than head position;
+            //head will go next to the destination position;
             nNode.next = adjacencyList[head.fromV];
             adjacencyList[head.fromV] = nNode;
         }
         else{
             int idx=nNode.toV;
-            while(h.next!=null && idx>h.next.toV){
+            while(h.next!=null && idx>h.next.toV){ 
+                //checks where the node should enter;
                 h = h.next;
             }
-            if(h.next==null){
+            if(h.next==null){ 
+                //there is nothing next to head;
                 h.next = nNode;
             }
-            else{
+            else{ 
+                //The node occupies any position in the middle of a linked list;
+                //any position means- want to insert '2' between '1' & '4';
                 nNode.next = h.next;
                 h.next = nNode;
             }
@@ -119,17 +125,6 @@ public class AdjacencyList {
         }
         return false;
     }
-
-    public int getIndex(Edge head, int des){
-        Edge h = head;
-        int idx=0;
-        while(des<=h.toV && h.next!=null){
-            idx++;
-            h=h.next;
-        }
-        System.out.println("GetIndex "+h.toV);
-        return idx;
-    }
     
     public int getLength(Edge h){
         Edge head = h;
@@ -141,9 +136,8 @@ public class AdjacencyList {
         return count;
     }
 
-    public void findMaxVer(Edge[] adjacencyList){
-        int max = 0;
-        int ver = 0;
+    public int[] findMaxVer(Edge[] adjacencyList){
+        int max[] = new int[2];
         for(int i=0; i<adjacencyList.length; i++){
             int tempSum=0;
             Edge head = adjacencyList[i];
@@ -151,17 +145,16 @@ public class AdjacencyList {
                 tempSum++;
                 head = head.next;
             }
-            if(i==0 || max<tempSum){
-                ver = i;
-                max=tempSum;
+            if(i==0 || max[1]<tempSum){
+                max[0] = i;
+                max[1]=tempSum;
             }
         }
-        System.out.println("Vertex: "+ver+"\nDegree: "+max);
+        return max;
     }
 
-    public void findMaxWeight(Edge[] adjacencyList){
-        int max = 0;
-        int ver = 0;
+    public int[] findMaxWeight(Edge[] adjacencyList){
+        int max[] = new int[2];
         for(int i=0; i<adjacencyList.length; i++){
             int tempSum=0;
             Edge head = adjacencyList[i];
@@ -169,12 +162,12 @@ public class AdjacencyList {
                 tempSum+=head.weight;
                 head = head.next;
             }
-            if(i==0 || max<tempSum){
-                ver = i;
-                max=tempSum;
+            if(i==0 || max[1]<tempSum){
+                max[0] = i;
+                max[1]=tempSum;
             }
         }
-        System.out.println("Vertex: "+ver+"\nSum of weight: "+max);
+        return max;
     }
 
     public void convert(Edge[] adjacencyList){
@@ -189,7 +182,7 @@ public class AdjacencyList {
     }
 
     public void printAdjacencyList(Edge[] adjacencyList){
-        for(int i=0; i<adjacencyList.length; i++){
+        for(int i=1; i<adjacencyList.length; i++){
             System.out.print(i+": ");
             printLL(adjacencyList[i]);
             System.out.println();
