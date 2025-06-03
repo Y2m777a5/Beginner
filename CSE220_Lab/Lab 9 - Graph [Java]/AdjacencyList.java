@@ -20,6 +20,7 @@ public class AdjacencyList {
     }
 
     public void addEdge(int src, int des, int wght){
+        //For Undirected-graph;
         if(!check){
             if(hasEdge(src, des)){
             Edge n = adjacencyList[src];
@@ -37,12 +38,11 @@ public class AdjacencyList {
                     adjacencyList[src]=newEdge;
                 }
                 else{
-                    //Append Linked List
+                    //Append Linked List;
                     appendLL(adjacencyList[src], newEdge);
                 }
             }
-
-            //Vice-versa
+            //Vice-versa;
             if(hasEdge(des, src)){
             Edge n = adjacencyList[src];
             while(n!=null){
@@ -64,6 +64,7 @@ public class AdjacencyList {
                 }
             }
         }
+        //for Directed-graph;
         else{
             if(hasEdge(src, des)){
             Edge n = adjacencyList[src];
@@ -81,7 +82,7 @@ public class AdjacencyList {
                     adjacencyList[src]=newEdge;
                 }
                 else{
-                    //Append Linked List
+                    //Append Linked List;
                     appendLL(adjacencyList[src], newEdge);
                 }
             }
@@ -126,14 +127,68 @@ public class AdjacencyList {
         return false;
     }
     
-    public int getLength(Edge h){
-        Edge head = h;
-        int count=0;
-        while(head!=null){
-            count++;
-            head = head.next;
+    public void removeLL(int src, int des){
+        //For Undirected-greph;
+        if(!check){
+            if(hasEdge(src, des)){
+                Edge head = adjacencyList[src];
+                while(head.next!=null && des>head.next.toV){
+                    head=head.next;
+                }
+                if(head.toV==des){
+                    //for removing head;
+                    adjacencyList[src] = head.next;
+                }
+                else if(head.next==null){
+                    //For removing last node;
+                    head=null;
+                }
+                else{
+                    //For removing any node from the middle;
+                    head.next = head.next.next;
+                }
+            }
+            //Vice-versa;
+            if(hasEdge(des, src)){
+                Edge head = adjacencyList[des];
+                while(head.next!=null && src>head.next.toV){
+                    head=head.next;
+                }
+                if(head.toV==src){
+                    //for removing head;
+                    adjacencyList[des] = head.next;
+                }
+                else if(head.next==null){
+                    //For removing last node;
+                    head=null;
+                }
+                else{
+                    //For removing any node from the middle;
+                    head.next = head.next.next;
+                }
+            }
         }
-        return count;
+        //For Directed-graph;
+        else{
+            if(hasEdge(src, des)){
+                Edge head = adjacencyList[src];
+                while(head.next!=null && des>head.next.toV){
+                    head=head.next;
+                }
+                if(head.toV==des){
+                    //for removing head;
+                    adjacencyList[src] = head.next;
+                }
+                else if(head.next==null){
+                    //For removing last node;
+                    head=null;
+                }
+                else{
+                    //For removing any node from the middle;
+                    head.next = head.next.next;
+                }
+            }
+        }
     }
 
     public int[] findMaxVer(Edge[] adjacencyList){
@@ -171,6 +226,7 @@ public class AdjacencyList {
     }
 
     public void convert(Edge[] adjacencyList){
+        check = false;
         for(int i=0; i<adjacencyList.length; i++){
             Edge head = adjacencyList[i];
             while(head!=null){

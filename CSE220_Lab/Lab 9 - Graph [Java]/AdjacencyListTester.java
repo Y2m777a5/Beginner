@@ -2,7 +2,8 @@
 public class AdjacencyListTester {
 
     public static void main(String[] agrs){
-        System.out.println("\n------------------------------\n");
+        System.out.println("\u001B[37m"+"\n----------------[ "+"\u001B[1;104m"+"THE ASSIGNMENT BEGINS HERE"+"\u001B[0m"+"\u001B[37m"+" ]----------------"+"\u001B[0m"+"\n");
+        //
         
         //Craeting graphUndirect (http://graphonline.top/?graph=vOKKmovfGoGqJmwNZZcst);
         AdjacencyList graphUndirect = new AdjacencyList(10, false);
@@ -94,7 +95,7 @@ public class AdjacencyListTester {
         maxWght = graphUndirect.findMaxWeight(graphDirect.adjacencyList);
         System.out.println("Expected output-\nVertex: 3\nDegree: 25\n");
         System.out.println("Resulted output-\nVertex: "+maxWght[0]+"\nDegree: "+maxWght[1]);
-        if(maxWght[0]==3 && maxWght[1]==25) printMatched(t1);
+        if(maxWght[0]==4 && maxWght[1]==25) printMatched(t1);
         else printMismatched(t1);
 
 
@@ -103,24 +104,54 @@ public class AdjacencyListTester {
         printTask(t4);
         graphDirect.convert(graphDirect.adjacencyList);
 
-        System.out.println("\n\n                      "+"\u001B[37m"+"---[ THE END ]---"+"\u001B[0m"+"                    \n");
+
+
+        printWarning();
+        String tx="Exp#01";
+        printExpr(tx);
+        graphDirect.removeLL(1, 3);
+        graphDirect.removeLL(1, 8);
+        graphDirect.printAdjacencyList(graphDirect.adjacencyList);
+
+        System.out.println("\n\n                      "+"\u001B[1;106m"+"\u001B[97m"+"---< THE  END >---"+"\u001B[0m"+"                      \n");
+        //"\u001B[1;106m" here before semicolon 1 means bold;
+        //It means we can change the styles using 1,4,0 before semicolon;
     }
 
 
     //To change the color of the output; 
     //[Inspired by AIB sir];
 
-    static final String green ="\u001B[32m", red ="\u001B[31m",white ="\u001B[37m", magenta ="\033[0;95m";
+    static final String red ="\u001B[91m", green ="\u001B[92m", yellow ="\u001B[93m", cyan ="\u001B[96m", white ="\u001B[97m", magenta ="\033[0;95m";
     static final String bold ="\u001B[1m", underline ="\u001B[4m", regular ="\033[0;0m";
+
+    //"\u001B" & "\033" both do the same work;
+    //Difference is "\u001B"-> HEXADECIMEL & "\033"-> OCTAL;
+    //"regular" resets the values that has been used before;
+
+    //for Foreground (Normal Colors)=> 31(red), 32(green), 33(yellow) and so on.
+    //for Foreground (Bright Colors)=> 91(red), 92(green), 93(yellow) and so on.
+
+    //for Background (Normal Colors)=> 41(red), 42(green), 43(yellow) and so on.
+    //for Background (Bright Colors)=> 101(red), 102(green), 103(yellow) and so on.
 
     static String taskSyntx =magenta;
     static String testSyntx =white;
+    static String exprmntSyntx =cyan;
     static String matchedSyntx =green+bold;
     static String mismatchedSyntx =red+bold;
     static String closeSyntx =regular;
 
+    public static void printWarning(){
+        System.out.println(yellow+bold+"\n\n[---------------> !!! EXPERIMENTAL TASKS !!! <---------------]"+closeSyntx);
+    }
+
+    public static void printExpr(String expr){
+        System.out.println(exprmntSyntx+"\n(-------------------------> "+underline+expr+regular+exprmntSyntx+" <-------------------------)\n"+closeSyntx);
+    }
+
     public static void printTask(String task){
-        System.out.println(taskSyntx+"\n(-------------------------> "+underline+task+regular+taskSyntx+" <-------------------------)\n"+closeSyntx);
+        System.out.println(taskSyntx+"\n\n(-------------------------> "+underline+task+regular+taskSyntx+" <-------------------------)\n"+closeSyntx);
     }
 
     public static void printTest(String task){
@@ -128,10 +159,10 @@ public class AdjacencyListTester {
     }
 
     public static void printMatched(String task){
-        System.out.println(matchedSyntx+"\n           [   !!! "+underline+task+" result matched"+regular+matchedSyntx+" !!!   ]       \n"+closeSyntx);
+        System.out.println(matchedSyntx+"\n\n           [   !!! "+underline+task+" result matched"+regular+matchedSyntx+" !!!   ]       \n"+closeSyntx);
     }
 
     public static void printMismatched(String task){
-        System.out.println(mismatchedSyntx+"\n        [   !!! "+underline+task+" result didn't matched"+regular+mismatchedSyntx+" !!!   ]        \n"+closeSyntx);
+        System.out.println(mismatchedSyntx+"\n\n        [   !!! "+underline+task+" result didn't matched"+regular+mismatchedSyntx+" !!!   ]        \n"+closeSyntx);
     }
 }
