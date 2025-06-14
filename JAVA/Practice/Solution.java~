@@ -1,0 +1,99 @@
+import java.io.*;
+import java.util.Scanner;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution{
+ public static void main(String[] args){
+  
+  Scanner in = new Scanner(System.in);
+  int testCases = Integer.parseInt(in.nextLine());
+  while(testCases>0){
+   String line = in.nextLine();
+   int len = line.length();
+   String temp ="";
+   int checker = 0;
+   String sum ="";
+   boolean flag = true;
+           for(int i=0; i<len; i++){
+               char lineChar= line.charAt(i);
+               
+               // collecting valid tag;
+               if (lineChar=='<'){
+                   checker=0;
+                   int count=0;
+                   String str1="", str2="";
+                   for(int a=i; a<len; a++){
+                       if(line.charAt(a) == '<'){
+                           count++;
+                           checker++;
+                       }
+                       if (a<len-1){
+                           str1 = ""+line.charAt(a)+ line.charAt(a+1);
+                       }
+                       if(str1.equals("</")){
+                           count--;
+                           }
+                       }
+                       checker--; //as the 1st '<' entering in this condition;
+                   
+                   boolean tagCheck = true;
+                   String stag="", etag="";
+                   for(int t=i; t<len; t++){
+                       if(line.charAt(t)=='<' || tagCheck || line.charAt(t)=='>'){
+                           if(line.charAt(t)=='<'){
+                               tagCheck = true;
+                           }
+                           else if(line.charAt(t)=='>'){
+                               tagCheck = false;
+                           }
+                           else{
+                               temp += line.charAt(t);
+                           }
+                       }
+                       stag = temp;
+                       if (t<len-2){
+                           str2 = ""+line.charAt(t)+ line.charAt(t+1);
+                       }
+                                    //System.out.println(str2);
+                       if(str2.equals("</")){
+                           System.out.println(count);
+                           System.out.println(t);
+                           if(count==1){
+                               for(int e=t+2; e<=(stag.length()+t+1); e++){
+                                         //System.out.print(e);
+                                   etag+=line.charAt(e);
+                               }
+                                System.out.println(etag);
+                                System.out.println(stag);
+                               if(stag.equals(etag)){
+                                   flag = true;
+                                   break;
+                               }
+                               else{
+                                   flag =false;
+                               }
+                           }
+                           else{count--;}
+                       }
+                   }
+                   i+=stag.length();
+               }
+                   System.out.println(flag);
+               if (flag){
+                   sum = sum+""+line.charAt(i);
+                                      System.out.println(checker);
+                   if(checker==0 && line.charAt(i+1)=='<'){
+                       System.out.println(sum);
+                   }
+                   else{
+                       sum="";
+                   }
+               }
+           }
+   
+   testCases--;
+  }
+ }
+}
