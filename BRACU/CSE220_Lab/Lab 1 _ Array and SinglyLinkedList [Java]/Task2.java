@@ -6,7 +6,7 @@ class Task2{
 
         //TO DO
         int max_water=0, y=0, xl=0, xr=height.length-1;
-        while(xl<xr){ //Taking values from btoh sides of x axis
+        while(xl<xr){ //Taking values from btoh sides of x axis;
             int width = xr-xl;
             if(height[xl]>height[xr]){ //Considering lower values as height so that water lavel doesn't exceed;
                y = height[xr];
@@ -16,7 +16,7 @@ class Task2{
                 y = height[xl];
                 xl++;
             }
-            int water = width*y; //Area
+            int water = width*y; //Value of Area;
             if(max_water<water || max_water==0){
                 max_water=water;
             }
