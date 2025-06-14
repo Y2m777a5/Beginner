@@ -9,8 +9,8 @@ public class Task3 {
         
         //TODO
 
-        //Once you're ready to return the String delete the
-        //following line
+        //Once you're ready to return the String delete the;
+        //following line;
         int count1=0,count2=0;
         Node temp1=building1, temp2=building2;
         while(temp1!=null){

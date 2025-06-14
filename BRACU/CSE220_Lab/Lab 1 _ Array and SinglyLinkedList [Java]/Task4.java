@@ -14,7 +14,7 @@ public class Task4 {
         Node temp1= head.next; // Taking next element Node;
         boolean flag = true;
         while(temp1.next!=null){
-            if((int)head.elem>(int)temp1.elem){ // Comparing the elements;
+            if((int)head.elem>(int)temp1.elem){ // Comparing with all the elements;
                 flag = false;
             }
             head=head.next;

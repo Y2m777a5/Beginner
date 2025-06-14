@@ -7,8 +7,8 @@ public class Task5 {
             n=n.next;
             count++;
         }
-        while(i<distArr.length){ // Running an array
-            Node temp = head; // All time initializes a Node 
+        while(i<distArr.length){ // Running an array;
+            Node temp = head; // All time initializes a Node ;
             int j=0;
             if(distArr[i]<count){ // Won't take value if it exceeds Node length;
                 while(j<distArr[i]){ // Taking Linked list to the designated address;

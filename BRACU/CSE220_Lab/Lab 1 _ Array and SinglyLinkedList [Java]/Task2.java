@@ -16,7 +16,7 @@ class Task2{
                 y = height[xl];
                 xl++;
             }
-            int water = width*y; //Value of Area;
+            int water = width*y; //Area;
             if(max_water<water || max_water==0){
                 max_water=water;
             }

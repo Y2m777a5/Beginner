@@ -5,10 +5,10 @@ class Task1{
     public static Integer[] mergeSortedArray( Integer[] arr1, Integer[] arr2 ){
 
         //TO DO
-        //DELETE the following return statement when you're ready to return the newly Created array
+        //DELETE the following return statement when you're ready to return the newly Created array;
         Integer [] arr = new Integer[arr1.length+arr2.length];
         int i=0, j=0, count=0;
-        while(i<arr1.length && j<arr2.length){ //Inserts elements in an ascending order from both arrays
+        while(i<arr1.length && j<arr2.length){ //Inserts elements in an ascending order from both arrays;
             if(arr1[i]<arr2[j]){
                 arr[count]=arr1[i];
                 i++; count++;
@@ -18,7 +18,7 @@ class Task1{
                 count++; j++;
             }
         }
-        //Left over of any array elements inserts through below Loops
+        //Left over of any array elements inserts through below Loops;
         while(i<arr1.length){
             arr[count]=arr1[i];
             i++; count++;
