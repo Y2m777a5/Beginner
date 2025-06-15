@@ -3,13 +3,13 @@ using namespace std;
 
 int main()
 {
-    int n;
+    long n;
     loopstart:
-    cout << "\033[1;96m" << "\n\nEnter number:" << "\033[97m" << endl;
+    cout << "\033[1;96m" << "\nEnter number:" << "\033[97m" << endl;
     cin >> n;
-    cout << ">> \033[38;2;170;255;0m";
+    cout << "\n>> \033[38;2;170;255;0m";
     // Write your code here
-    if(n>=1 && n<=100000000){
+    if(n>=1 && n<=10000000){
         if(n==1){
             printf("one");
         }
