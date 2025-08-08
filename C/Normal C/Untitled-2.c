@@ -1,18 +1,21 @@
 //Code for Addition
 
 #include<stdio.h>
+#define cyan "\033[1;91m"
+#define purple "\033[1;95m"
+#define blue "\033[1;94m"
+#define reset "\033[0m"
 
 void main()
 {
-    float a,b,result;
-    printf("\n!!Welcome to 'Addition Function'!! You can calculate addition of two numbers here.....\n");
+    double a,b;
+    printf(cyan"\n        !!Welcome to 'Addition Function'!!\nYou can calculate addition of two numbers here......\n");
 
-    printf("Please enter value 1 -");
-    scanf("%f",&a);
+    printf(purple"\nPlease enter value-1 : "reset);
+    scanf("%lf",&a);
     
-    printf("Please enter value 2 -");
-    scanf("%f",&b);
+    printf(purple"Please enter value-2 : "reset);
+    scanf("%lf",&b);
     
-    result = a + b;
-    printf("Result is %f\n", result);
+    printf(blue"Result is "reset"%.4lf\n\n", (a+b));
 }

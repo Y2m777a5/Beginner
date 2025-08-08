@@ -1,2 +1,15 @@
-
-   printf("x 2 = %f\n",n2);
+if(operator=='+'){
+    //     printf("Addition : %d",(a+b));
+    // }
+    // else if(operator=='-'){
+    //     printf("Addition : %d",(a-b));
+    // }
+    // else if(operator=='*'){
+    //     printf("Addition : %d",(a*b));
+    // }
+    // else if(operator=='/'){
+    //     printf("Addition : %d",(a/b));
+    // }
+    // else{
+    //     printf("Invalid operator");
+    // }
